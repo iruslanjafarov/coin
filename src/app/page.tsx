@@ -8,9 +8,6 @@ export const metadata: Metadata = {
 const Main = () => {
 	return (
 		<>
-			<Container>
-				<h1>hello</h1>
-			</Container>
 		</>
 	);
 };
