@@ -3,6 +3,8 @@
 import { IItem } from '@/types/item';
 
 import useHttp from './useHttp';
+import { useStore } from '@/store/store';
+import { useEffect } from 'react';
 
 /**
  * Custom hook to fetch a list of items (currencies) using the `useHttp` hook.
@@ -14,11 +16,17 @@ import useHttp from './useHttp';
  */
 
 const useItems = () => {
+	const { setItems } = useStore();
+
 	const url: string = 'https://spectrum-happy-apology.glitch.me/currencies';
 
 	const { data, loading } = useHttp<IItem[]>(url);
 
-	return { data, loading };
+	useEffect(() => {
+		setItems(data);
+	}, [data, setItems]);
+
+	return { loading };
 };
 
 export default useItems;

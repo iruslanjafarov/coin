@@ -6,6 +6,7 @@ import Spinner from '@/components/spinner';
 import Container from '@/components/container';
 import Item from '@/components/item';
 import TransitionViewEvery from '@/components/transitionViewEvery';
+import { useStore } from '@/store/store';
 
 /**
  * Main component for displaying items with a loading spinner while data is being fetched.
@@ -15,7 +16,8 @@ import TransitionViewEvery from '@/components/transitionViewEvery';
  */
 
 const Main = () => {
-	const { data, loading } = useItems();
+	const { items } = useStore();
+	const { loading } = useItems();
 
 	return (
 		<main>
@@ -27,7 +29,7 @@ const Main = () => {
 						</div>
 					)}
 					<div className='flex flex-col gap-3'>
-						{data?.map(({ id, thumbnail, name, price }) => (
+						{items?.map(({ id, thumbnail, name, price }) => (
 							<TransitionViewEvery index={id} key={id}>
 								<Item id={id} thumbnail={thumbnail} name={name} price={price} />
 							</TransitionViewEvery>
