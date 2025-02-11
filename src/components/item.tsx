@@ -14,9 +14,9 @@ const Item: FC<IItem> = ({ id, thumbnail, name, price }) => {
 					<Image
 						src={thumbnail}
 						alt={name}
-						className='w-[48px] h-[48px]'
-						width={48}
-						height={48}
+						className='w-[42px] h-[42px]'
+						width={42}
+						height={42}
 					/>
 					<div className='h-[20px] mx-2 border-r border-gray-300' />
 					<div className='tracking-tight'>{name}</div>
