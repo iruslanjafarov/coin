@@ -7,6 +7,11 @@ import Header from '@/components/header';
 
 import '../styles/style.css';
 
+/**
+ * Metadata for the platform page, including title, description, and other SEO-related tags.
+ * @type {Metadata}
+ */
+
 export const metadata: Metadata = {
 	title: 'Coin | Платформа для торговли криптовалютами',
 	description:
@@ -17,7 +22,21 @@ export const metadata: Metadata = {
 	robots: 'index, follow',
 };
 
+/**
+ * Global font configuration using Nunito from Google Fonts.
+ * @type {object}
+ */
+
 const nunito = Nunito({ display: 'swap', subsets: ['latin'] });
+
+/**
+ * Root layout component that wraps the entire page with necessary meta information and structure.
+ * It includes the header and passes the children content within the body.
+ *
+ * @param {Object} props - The properties passed to the layout component.
+ * @param {ReactNode} props.children - The child components or elements to be rendered within the body.
+ * @returns {JSX.Element} The JSX structure of the root layout.
+ */
 
 export default function RootLayout({
 	children,

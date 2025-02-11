@@ -7,6 +7,13 @@ import Container from '@/components/container';
 import Item from '@/components/item';
 import TransitionViewEvery from '@/components/transitionViewEvery';
 
+/**
+ * Main component for displaying items with a loading spinner while data is being fetched.
+ * It uses a custom hook `useItems` to retrieve the data and show a spinner during loading.
+ *
+ * @returns {JSX.Element} The main section of the page containing items or a loading spinner.
+ */
+
 const Main = () => {
 	const { data, loading } = useItems();
 

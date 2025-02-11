@@ -5,6 +5,13 @@ import Container from './container';
 
 import Icon from '@/assets/icon.svg';
 
+/**
+ * Header component that displays the site logo (icon) and a link to the personal account.
+ * The logo is rendered as an image and the personal account button is wrapped in a link.
+ *
+ * @returns {JSX.Element} The header of the page containing the logo and the personal account button.
+ */
+
 const Header = () => {
 	return (
 		<header>

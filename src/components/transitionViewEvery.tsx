@@ -7,6 +7,16 @@ interface ITransitionViewEvery {
 	index: number;
 }
 
+/**
+ * A motion component that animates its children with a fade and slide effect.
+ * The animation applies a delay based on the index of the item to create staggered effects.
+ *
+ * @param {ITransitionViewEvery} props - The properties passed to the component.
+ * @param {ReactNode} props.children - The child elements to be animated.
+ * @param {number} props.index - The index used to control the delay of the animation.
+ * @returns {JSX.Element} The animated container that wraps the children.
+ */
+
 const TransitionViewEvery: FC<ITransitionViewEvery> = ({ children, index }) => {
 	return (
 		<motion.div
