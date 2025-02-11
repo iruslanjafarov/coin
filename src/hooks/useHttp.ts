@@ -15,6 +15,7 @@ const useHttp = <T>(url: string) => {
 			const request: T = await ky.get(url).json();
 
 			setData(request);
+
 			setLoading(false);
 		} catch (error) {
 			console.error(error instanceof Error ? error.message : 'Unknown error');
