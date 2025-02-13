@@ -9,8 +9,8 @@ interface IStore {
 
 /**
  * Zustand store for managing the list of items (currencies).
- * 
- * @returns {IStore} The store with `items` and the `setItems` action.
+ *
+ * @returns The store with `items` and the `setItems` action.
  */
 
 export const useStore = create<IStore>((set) => ({

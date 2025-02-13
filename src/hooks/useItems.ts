@@ -10,9 +10,8 @@ import { useEffect } from 'react';
  * Custom hook to fetch a list of items (currencies) using the `useHttp` hook.
  * This hook provides the data and loading state for the list of items.
  *
- * @returns {Object} The hook returns an object with two properties:
- * @returns {IItem[] | null} data - The list of items (currencies) or `null` if the data is not yet available.
- * @returns {boolean} loading - The loading state indicating if the data is being fetched.
+ * @returns The hook returns an object with the following property:
+ * @returns {loading} - The loading state indicating if the data is being fetched.
  */
 
 const useItems = () => {

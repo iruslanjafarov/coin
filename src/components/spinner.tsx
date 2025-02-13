@@ -4,7 +4,7 @@ import { FC } from 'react';
  * Spinner component that renders a loading spinner with a golden border.
  * It uses a CSS animation to spin continuously, indicating a loading state.
  *
- * @returns {JSX.Element} The spinner component to be displayed during loading.
+ * @returns The spinner component to be displayed during loading.
  */
 
 const Spinner: FC = () => {

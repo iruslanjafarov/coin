@@ -1,6 +1,6 @@
 import type { FC, ReactNode } from 'react';
 
-interface ICointaier {
+interface IContainer {
 	children: ReactNode;
 	className?: string;
 }
@@ -9,13 +9,13 @@ interface ICointaier {
  * Container component that wraps its children inside a div with a maximum width
  * and optional custom class name for styling.
  *
- * @param {ICointaier} props - The properties passed to the container component.
- * @param {ReactNode} props.children - The child components or elements to be rendered inside the container.
- * @param {string} [props.className] - Optional custom class name for additional styling.
- * @returns {JSX.Element} The container component with children and custom class name.
+ * @param props - The properties passed to the container component.
+ * @param props.children - The child components or elements to be rendered inside the container.
+ * @param props.className - Optional custom class name for additional styling.
+ * @returns The container component with children and custom class name.
  */
 
-const Container: FC<ICointaier> = ({ children, className }) => {
+const Container: FC<IContainer> = ({ children, className }) => {
 	return (
 		<div className={`max-w-[1000px] w-full mx-auto ${className}`}>
 			{children}

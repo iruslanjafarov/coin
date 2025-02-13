@@ -10,12 +10,12 @@ import { ChevronRightIcon } from '@heroicons/react/24/solid';
  * Item component that displays a single item with its thumbnail, name, and price.
  * The component is clickable, redirecting to the item's detail page.
  *
- * @param {IItem} props - The properties for the item.
- * @param {string} props.id - The unique identifier for the item.
- * @param {string} props.thumbnail - The URL of the item's thumbnail image.
- * @param {string} props.name - The name of the item.
- * @param {number} props.price - The price of the item.
- * @returns {JSX.Element} The item component with a link to its detail page.
+ * @param props - The properties for the item.
+ * @param props.id - The unique identifier for the item.
+ * @param props.thumbnail - The URL of the item's thumbnail image.
+ * @param props.name - The name of the item.
+ * @param props.price - The price of the item.
+ * @returns The item component with a link to its detail page.
  */
 
 const Item: FC<IItem> = ({ id, thumbnail, name, price }) => {
