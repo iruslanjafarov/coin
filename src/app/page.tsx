@@ -21,7 +21,7 @@ const Main = () => {
 
 	return (
 		<main>
-			<div className='mt-6'>
+			<div className='my-6'>
 				<Container>
 					{loading && (
 						<div className='w-full h-full absolute top-0 left-0 flex justify-center items-center'>

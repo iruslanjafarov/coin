@@ -4,6 +4,7 @@ import type { ReactNode } from 'react';
 import { Nunito } from 'next/font/google';
 
 import Header from '@/components/header';
+import Footer from '@/components/footer';
 
 import '../styles/style.css';
 
@@ -62,9 +63,10 @@ export default function RootLayout({
 					href='/favicon/favicon-16x16.png'
 				/>
 			</head>
-			<body className={nunito.className}>
+			<body className={`${nunito.className} flex flex-col min-h-screen`}>
 				<Header />
-				{children}
+				<div className='flex-1'>{children}</div>
+				<Footer />
 			</body>
 		</html>
 	);
