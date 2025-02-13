@@ -3,7 +3,7 @@
 import { IItem } from '@/types/item';
 
 import useHttp from './useHttp';
-import { useStore } from '@/store/store';
+import useStore from '@/store/store';
 import { useEffect } from 'react';
 
 /**

@@ -13,7 +13,9 @@ interface IStore {
  * @returns The store with `items` and the `setItems` action.
  */
 
-export const useStore = create<IStore>((set) => ({
+const useStore = create<IStore>((set) => ({
 	items: [],
 	setItems: (items) => set({ items }),
 }));
+
+export default useStore;
