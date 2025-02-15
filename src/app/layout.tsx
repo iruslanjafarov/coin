@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import type { ReactNode } from 'react';
+import type { FC, ReactNode } from 'react';
 
 import { Nunito } from 'next/font/google';
 
@@ -7,10 +7,6 @@ import Header from '@/components/header';
 import Footer from '@/components/footer';
 
 import '../styles/style.css';
-
-/**
- * Metadata for the platform page, including title, description, and other SEO-related tags.
- */
 
 export const metadata: Metadata = {
 	title: 'Coin | Платформа для торговли криптовалютами',
@@ -22,11 +18,11 @@ export const metadata: Metadata = {
 	robots: 'index, follow',
 };
 
-/**
- * Global font configuration using Nunito from Google Fonts.
- */
-
 const nunito = Nunito({ display: 'swap', subsets: ['latin'] });
+
+interface IRootLayout {
+	children: Readonly<ReactNode>;
+}
 
 /**
  * Root layout component that wraps the entire page with necessary meta information and structure.
@@ -37,11 +33,7 @@ const nunito = Nunito({ display: 'swap', subsets: ['latin'] });
  * @returns The JSX structure of the root layout.
  */
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: ReactNode;
-}>) {
+const RootLayout: FC<IRootLayout> = ({ children }) => {
 	return (
 		<html lang='ru'>
 			<head>
@@ -70,4 +62,6 @@ export default function RootLayout({
 			</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;
