@@ -39,7 +39,7 @@ const Footer = () => {
 		{ src: GooglePay, alt: 'GooglePay' },
 		{ src: Mir, alt: 'Mir' },
 		{ src: Visa, alt: 'Visa' },
-		{ src: MasterCard, alt: 'MasterCard' },
+		// { src: MasterCard, alt: 'MasterCard' },
 	];
 
 	return (
