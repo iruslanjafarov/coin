@@ -9,7 +9,7 @@ import AppleLogo from '@/assets/apple.svg';
 import GooglePay from '@/assets/google.svg';
 import Mir from '@/assets/mir.svg';
 import Visa from '@/assets/visa.svg';
-// import MasterCard from '@/assets/mastercard.svg';
+import MasterCard from '@/assets/mastercard.svg';
 import TransitionViewEvery from './transitionViewEvery';
 
 /**
@@ -39,7 +39,7 @@ const Footer = () => {
 		{ src: GooglePay, alt: 'GooglePay' },
 		{ src: Mir, alt: 'Mir' },
 		{ src: Visa, alt: 'Visa' },
-		// { src: MasterCard, alt: 'MasterCard' },
+		{ src: MasterCard, alt: 'MasterCard' },
 	];
 
 	return (
