@@ -6,7 +6,7 @@ import { Nunito } from 'next/font/google';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
-import '../styles/style.css';
+import '@/styles/style.css';
 
 export const metadata: Metadata = {
 	title: 'Coin | Платформа для торговли криптовалютами',
