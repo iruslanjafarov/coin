@@ -57,7 +57,9 @@ const Item: FC<IItem> = ({ id, thumbnail, name, price, prevPrice }) => {
 					<div className={`transition-colors duration-300 ${priceColor}`}>
 						{price.toFixed(2)} $
 					</div>
-					<ChevronRightIcon className='size-5 text-gray-600' />
+					<ChevronRightIcon
+						className={`size-5 transition-colors duration-300 ${priceColor}`}
+					/>
 				</div>
 			</div>
 		</Link>
