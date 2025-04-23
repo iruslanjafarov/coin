@@ -21,7 +21,7 @@ const useStore = create<IStore>((set, get) => ({
 	randomizePrices: () => {
 		const updated = get().items.map((item) => {
 			const change = Math.floor(Math.random() * 10) - 5;
-			const newPrice = Math.max(0, item.price + change);
+			const newPrice = Math.max(0.01, item.price + change);
 			return {
 				...item,
 				prevPrice: item.price,
