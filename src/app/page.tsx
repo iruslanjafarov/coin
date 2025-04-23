@@ -1,5 +1,7 @@
 'use client';
 
+import { useEffect } from 'react';
+
 import useStore from '@/store/store';
 import useItems from '@/hooks/useItems';
 
@@ -16,8 +18,16 @@ import TransitionViewEvery from '@/components/transitionViewEvery';
  */
 
 const Main = () => {
-	const { items } = useStore();
+	const { items, randomizePrices } = useStore();
 	const { loading } = useItems();
+
+	useEffect(() => {
+		const interval = setInterval(() => {
+			randomizePrices();
+		}, 2000);
+
+		return () => clearInterval(interval);
+	}, [randomizePrices]);
 
 	return (
 		<main>
@@ -29,9 +39,15 @@ const Main = () => {
 						</div>
 					)}
 					<div className='flex flex-col gap-3'>
-						{items?.map(({ id, thumbnail, name, price }) => (
+						{items?.map(({ id, thumbnail, name, price, prevPrice }) => (
 							<TransitionViewEvery index={id} key={id}>
-								<Item id={id} thumbnail={thumbnail} name={name} price={price} />
+								<Item
+									id={id}
+									thumbnail={thumbnail}
+									name={name}
+									price={price}
+									prevPrice={prevPrice}
+								/>
 							</TransitionViewEvery>
 						))}
 					</div>
