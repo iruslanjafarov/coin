@@ -31,7 +31,7 @@ const Item: FC<IItem> = ({ id, thumbnail, name, price }) => {
 						height={42}
 					/>
 					<div className='h-[20px] mx-2 border-r border-gray-300' />
-					<div className='tracking-tight'>{name}</div>
+					<div className='tracking-tight truncate'>{name}</div>
 				</div>
 				<div className='flex items-center gap-2'>
 					<div className='text-gray-500'>{price} $</div>

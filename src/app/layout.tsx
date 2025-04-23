@@ -55,7 +55,7 @@ const RootLayout: FC<IRootLayout> = ({ children }) => {
 					href='/favicon/favicon-16x16.png'
 				/>
 			</head>
-			<body className={`${nunito.className} flex flex-col min-h-screen`}>
+			<body className={`${nunito.className} flex flex-col min-h-screen px-6`}>
 				<Header />
 				<div className='flex-1'>{children}</div>
 				<Footer />
