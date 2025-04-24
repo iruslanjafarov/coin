@@ -1,11 +1,11 @@
-import { FC } from 'react';
-
 interface IDetail {
-	params: { id: number };
+	params: Promise<{ id: string }>;
 }
 
-const Detail: FC<IDetail> = ({ params }) => {
-	return <h1>{params?.id}</h1>;
+const Detail = async ({ params }: IDetail) => {
+	const { id } = await params;
+
+	return <h1>{id}</h1>;
 };
 
 export default Detail;
