@@ -7,7 +7,7 @@ import useItems from '@/hooks/useItems';
 
 import Spinner from '@/components/spinner';
 import Container from '@/components/container';
-import Item from '@/components/item';
+import Item from '@/components/main/item';
 import TransitionViewEvery from '@/components/transitionViewEvery';
 
 /**
