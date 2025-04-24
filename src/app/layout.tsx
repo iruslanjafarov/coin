@@ -9,7 +9,7 @@ import Footer from '@/components/footer';
 import '@/styles/style.css';
 
 export const metadata: Metadata = {
-	title: 'Coin | Платформа для торговли криптовалютами',
+	title: 'Coin',
 	description:
 		'Coin — безопасная платформа для торговли криптовалютами. Простой интерфейс для управления портфелем, отслеживания курсов и совершения сделок.',
 	keywords:
