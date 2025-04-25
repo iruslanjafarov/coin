@@ -1,14 +1,10 @@
-'use client';
-
-import TransitionViewEvery from '@/components/transitionViewEvery';
-
 const Main = () => {
 	return (
-		<TransitionViewEvery index={2}>
-			<h1 className='text-5xl font-bold bg-black text-white p-2 rounded-lg'>
+		<div className='p-6'>
+			<h1 className='text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center font-bold bg-black text-white p-2 rounded-lg'>
 				Продукт в разработке
 			</h1>
-		</TransitionViewEvery>
+		</div>
 	);
 };
 
