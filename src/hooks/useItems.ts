@@ -22,7 +22,9 @@ const useItems = () => {
 	const { data, loading } = useHttp<IItem[]>(url);
 
 	useEffect(() => {
-		setItems(data);
+		if (data) {
+			setItems(data);
+		}
 	}, [data, setItems]);
 
 	return { loading };

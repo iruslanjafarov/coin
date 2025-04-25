@@ -10,12 +10,12 @@ import ky from 'ky';
  *
  * @param url - The URL to fetch data from.
  * @returns An object with the following properties:
- * - `data`: The fetched data or an empty array `[]` if data is not yet available.
+ * - `data`: The fetched data or null if data is not yet available.
  * - `loading`: The loading state indicating if the data is being fetched.
  */
 
 const useHttp = <T>(url: string) => {
-	const [data, setData] = useState<T | []>([]);
+	const [data, setData] = useState<T | null>(null);
 	const [loading, setLoading] = useState<boolean>(false);
 
 	const fetchData = useCallback(async () => {
