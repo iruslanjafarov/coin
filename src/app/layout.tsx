@@ -4,6 +4,8 @@ import type { Metadata } from 'next';
 
 import { Nunito } from 'next/font/google';
 
+import Footer from './footer';
+
 import '@/styles/style.css';
 
 export const metadata: Metadata = {
@@ -24,9 +26,10 @@ const RootLayout: FC<IRootLayout> = ({ children }) => {
 	return (
 		<html lang='ru'>
 			<body
-				className={`${nunito.className} flex w-full h-full justify-center items-center fixed`}
+				className={`${nunito.className} relative min-h-screen flex items-center justify-center`}
 			>
 				{children}
+				<Footer />
 			</body>
 		</html>
 	);
