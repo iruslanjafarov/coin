@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 
 import { Nunito } from 'next/font/google';
 
-import Footer from './footer';
+//import Footer from './footer';
 
 import '@/styles/style.css';
 
@@ -29,7 +29,7 @@ const RootLayout: FC<IRootLayout> = ({ children }) => {
 				<main className='flex-grow flex items-center justify-center'>
 					{children}
 				</main>
-				<Footer />
+				{/*<Footer />*/}
 			</body>
 		</html>
 	);
