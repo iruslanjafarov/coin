@@ -25,10 +25,10 @@ interface IRootLayout {
 const RootLayout: FC<IRootLayout> = ({ children }) => {
 	return (
 		<html lang='ru'>
-			<body
-				className={`${nunito.className} relative min-h-screen flex items-center justify-center`}
-			>
-				{children}
+			<body className={`${nunito.className} min-h-screen relative`}>
+				<div className='absolute inset-0 flex items-center justify-center'>
+					{children}
+				</div>
 				<Footer />
 			</body>
 		</html>
