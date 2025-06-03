@@ -1,6 +1,7 @@
 'use client';
 
 import useStore from '@/store/store';
+import { usePathname } from 'next/navigation';
 
 import Container from './container';
 import Logo from './logo';
@@ -23,8 +24,14 @@ import TransitionViewEvery from './transitionViewEvery';
 
 const Footer = () => {
 	const { items } = useStore();
+	const pathname: string = usePathname();
 
-	if (!items.length) {
+	const hideFooterRoutes: string[] = ['/login', '/detail'];
+	const hideFooterCondition: boolean = hideFooterRoutes.some((route) =>
+		pathname.startsWith(route)
+	);
+
+	if (!items.length || hideFooterCondition) {
 		return null;
 	}
 
@@ -48,7 +55,7 @@ const Footer = () => {
 				<TransitionViewEvery index={items?.length + 1}>
 					<div className='h-[200px] font-bold flex flex-col justify-between bg-black font-sans text-white my-6 p-6 rounded-lg'>
 						<div className='items-center'>
-							<div className='text-zinc-500 uppercase'>Payment methods</div>
+							<div className='text-zinc-500 uppercase'>МЕТОДЫ ОПЛАТЫ</div>
 							<div className='flex gap-3 mt-3 h-[30px]'>
 								{Logos.map(({ src, alt }, idx) => (
 									<Logo src={src} alt={alt} key={idx} />

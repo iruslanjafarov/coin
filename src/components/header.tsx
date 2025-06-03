@@ -1,3 +1,6 @@
+'use client';
+
+import { usePathname } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -13,6 +16,12 @@ import Icon from '@/assets/icon.svg';
  */
 
 const Header = () => {
+	const pathname: string = usePathname();
+
+	const hideAccountButtonRoutes: string[] = ['/login'];
+	const hideAccountButtonCondition: boolean =
+		hideAccountButtonRoutes.includes(pathname);
+
 	return (
 		<header>
 			<Container className='my-6 flex justify-between items-center'>
@@ -24,9 +33,11 @@ const Header = () => {
 						priority={true}
 					/>
 				</Link>
-				<button className='bg-[#FFD700]/70 px-3 py-2 rounded-lg flex items-center gap-2 transition-transform duration-200 hover:-translate-y-0.5 cursor-pointer'>
-					Личный кабинет
-				</button>
+				{!hideAccountButtonCondition && (
+					<button className='bg-[#FFD700]/70 px-3 py-2 rounded-lg flex items-center gap-2 transition-transform duration-200 hover:-translate-y-0.5 cursor-pointer'>
+						Личный кабинет
+					</button>
+				)}
 			</Container>
 		</header>
 	);
