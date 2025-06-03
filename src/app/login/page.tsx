@@ -2,6 +2,10 @@
 
 import { useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
+import { useGuestRedirect } from '@/hooks/useGuestRedirect';
+
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Container from '@/components/container';
@@ -23,6 +27,10 @@ interface ILoginInputs {
 const Login = () => {
 	const [isWrong, setIsWrong] = useState(false);
 
+	useGuestRedirect();
+
+	const router = useRouter();
+
 	const {
 		register,
 		handleSubmit,
@@ -32,8 +40,9 @@ const Login = () => {
 	const onSubmit: SubmitHandler<ILoginInputs> = (data) => {
 		setIsWrong(false);
 
-		if (data?.email === 'admin@admin.ru' && data?.password === '123') {
+		if (data?.email === 'jafarov@jafarov.store' && data?.password === '123') {
 			localStorage.setItem('isAuth', 'true');
+			router.push('/');
 		} else {
 			setIsWrong(true);
 		}
