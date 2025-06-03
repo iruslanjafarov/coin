@@ -1,6 +1,7 @@
 'use client';
 
 import useStore from '@/store/store';
+import { usePathname } from 'next/navigation';
 
 import Container from './container';
 import Logo from './logo';
@@ -23,8 +24,14 @@ import TransitionViewEvery from './transitionViewEvery';
 
 const Footer = () => {
 	const { items } = useStore();
+	const pathname: string = usePathname();
 
-	if (!items.length) {
+	const hideFooterRoutes: string[] = ['/login', '/detail'];
+	const hideFooterCondition: boolean = hideFooterRoutes.some((route) =>
+		pathname.startsWith(route)
+	);
+
+	if (!items.length || hideFooterCondition) {
 		return null;
 	}
 
