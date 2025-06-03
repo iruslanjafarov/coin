@@ -30,18 +30,6 @@ interface IChartProps {
 /**
  * Chart component for visualizing price data using a line graph.
  *
- * This component renders a line chart with Chart.js and dynamically adjusts
- * the line color based on the price trend:
- * - Green (`#22c55e`) if price is rising
- * - Red (`#ef4444`) if price is falling
- * - Gray (`#6b7280`) if price remains unchanged
- *
- * Features:
- * - Disables x-axis display and grid for a cleaner layout
- * - Displays y-axis with grid for reference
- * - Tooltip shows only the Y value (price), hiding the X label
- * - No point markers for a smooth look
- * - Rigid (non-smooth) line transitions (`tension: 0`)
  *
  * @param labels - Array of timestamps used for the x-axis (hidden)
  * @param data - Array of numerical price values
