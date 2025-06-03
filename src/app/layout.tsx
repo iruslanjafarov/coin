@@ -3,6 +3,7 @@ import type { FC, ReactNode } from 'react';
 
 import { Nunito } from 'next/font/google';
 
+import TopLoader from '@/components/topLoader';
 import Header from '@/components/header';
 import Footer from '@/components/footer';
 
@@ -56,6 +57,7 @@ const RootLayout: FC<IRootLayout> = ({ children }) => {
 				/>
 			</head>
 			<body className={`${nunito.className} flex flex-col min-h-screen px-6`}>
+				<TopLoader />
 				<Header />
 				<div className='flex-1'>{children}</div>
 				<Footer />

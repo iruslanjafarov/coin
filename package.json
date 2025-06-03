@@ -13,6 +13,7 @@
 		"ky": "^1.7.4",
 		"motion": "^12.4.2",
 		"next": "^15.3.3",
+		"nextjs-toploader": "^3.8.16",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0",
 		"react-hook-form": "^7.57.0",
