@@ -1,5 +1,7 @@
 'use client';
 
+import { useState } from 'react';
+
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import Container from '@/components/container';
@@ -19,6 +21,8 @@ interface ILoginInputs {
 }
 
 const Login = () => {
+	const [isWrong, setIsWrong] = useState(false);
+
 	const {
 		register,
 		handleSubmit,
@@ -26,8 +30,12 @@ const Login = () => {
 	} = useForm<ILoginInputs>();
 
 	const onSubmit: SubmitHandler<ILoginInputs> = (data) => {
+		setIsWrong(false);
+
 		if (data?.email === 'admin@admin.ru' && data?.password === '123') {
-			//логика аутентификации
+			localStorage.setItem('isAuth', 'true');
+		} else {
+			setIsWrong(true);
 		}
 	};
 
@@ -53,10 +61,14 @@ const Login = () => {
 						required
 						error={errors?.password}
 					/>
-
+					{isWrong && (
+						<span className='text-sm text-red-500'>
+							Неверный логин или пароль. Проверьте введённые данные.
+						</span>
+					)}
 					<button
 						type='submit'
-						className='mt-2 px-4 py-2 cursor-pointer rounded-md border border-gray-300 text-sm text-gray-700 hover:border-[#FFD700] focus:outline-none focus:border-[#FFD700] transition-colors duration-200'
+						className='mt-2 px-4 bg-[#FFD700] py-2 cursor-pointer rounded-md text-sm text-gray-700 focus:outline-none focus:border-[#FFD700] focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2'
 					>
 						Войти
 					</button>
