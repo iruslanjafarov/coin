@@ -10,7 +10,6 @@ import useStore from '@/store/store';
 import useItem from '@/hooks/useItem';
 
 import Container from '@/components/container';
-import Spinner from '@/components/spinner';
 import Chart from '@/components/chart';
 
 /**
@@ -51,11 +50,18 @@ const Detail = () => {
 	if (loading || !item) {
 		return (
 			<main>
-				<Container>
-					<div className='w-full h-full flex justify-center items-center py-12'>
-						<Spinner />
-					</div>
-				</Container>
+				<section className='my-6'>
+					<Container>
+						<div className='flex justify-between items-center mt-12 animate-pulse'>
+							<div className='flex flex-col gap-2'>
+								<div className='h-9 w-48 bg-gray-200 rounded'></div>
+								<div className='h-8 w-32 bg-gray-200 rounded'></div>
+							</div>
+							<div className='w-24 h-24 bg-gray-200 rounded-full'></div>
+						</div>
+						<div className='mt-6 p-4 rounded-2xl border border-gray-200 shadow-sm h-[518px] bg-gray-100 animate-pulse' />
+					</Container>
+				</section>
 			</main>
 		);
 	}
