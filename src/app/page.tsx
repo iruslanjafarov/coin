@@ -31,7 +31,7 @@ const Main = () => {
 
 	return (
 		<main>
-			<div className='my-6'>
+			<section className='my-6'>
 				<Container>
 					{loading && (
 						<div className='w-full h-full absolute top-0 left-0 flex justify-center items-center'>
@@ -52,7 +52,7 @@ const Main = () => {
 						))}
 					</div>
 				</Container>
-			</div>
+			</section>
 		</main>
 	);
 };
