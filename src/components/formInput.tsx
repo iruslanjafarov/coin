@@ -43,7 +43,7 @@ const FormInput = <T extends FieldValues>({
 		<div className='flex flex-col space-y-1'>
 			{label && (
 				<label
-					className={`text-gray-700 ${error ? 'text-red-500' : ''}`}
+					className={`text-gray-600 ${error ? 'text-red-500' : ''}`}
 					htmlFor={name}
 				>
 					{label}
