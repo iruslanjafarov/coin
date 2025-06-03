@@ -17,7 +17,7 @@ interface ILoginLayout {
  */
 
 const LoginLayout: FC<ILoginLayout> = ({ children }) => {
-	return children;
+	return <div className='overflow-hidden px-0'>{children}</div>;
 };
 
 export default LoginLayout;

@@ -8,7 +8,7 @@ import {
 } from 'react-hook-form';
 
 interface FormInputProps<T extends FieldValues> {
-	type: string;
+	type: 'email' | 'password';
 	name: Path<T>;
 	label?: string;
 	placeholder?: string;
@@ -42,7 +42,10 @@ const FormInput = <T extends FieldValues>({
 	return (
 		<div className='flex flex-col space-y-1'>
 			{label && (
-				<label className={error ? 'border-red-500' : ''} htmlFor={name}>
+				<label
+					className={`text-gray-700 ${error ? 'text-red-500' : ''}`}
+					htmlFor={name}
+				>
 					{label}
 				</label>
 			)}
@@ -50,10 +53,13 @@ const FormInput = <T extends FieldValues>({
 				type={type}
 				id={name}
 				placeholder={placeholder}
-				{...register(name, { required })}
-				className={`border px-3 py-2 rounded-md ${
-					error ? 'border-red-500' : ''
-				}`}
+				{...register(name, {
+					required: required ? `Поле '${label || name}' обязательное` : false,
+				})}
+				className={`px-3 py-2 rounded-md 
+          border ${
+						error ? 'border-red-500' : 'border-gray-300'
+					} focus:border-[#FFD700] focus:outline-none transition-colors duration-200`}
 			/>
 			{error && <span className='text-sm text-red-500'>{error.message}</span>}
 		</div>
