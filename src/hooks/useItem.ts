@@ -16,7 +16,7 @@ import { useEffect } from 'react';
  */
 
 const useItem = (id: string) => {
-	const { clearItem, setItem } = useStore();
+	const { clearItem, setItem, setItemWithId } = useStore();
 
 	const url: string = `https://spectrum-happy-apology.glitch.me/currencies/${id}`;
 
@@ -24,7 +24,13 @@ const useItem = (id: string) => {
 
 	useEffect(() => {
 		clearItem();
-	}, [clearItem, id]);
+	}, [id]);
+
+	useEffect(() => {
+		if (data) {
+			setItemWithId(id, data);
+		}
+	}, [data, id]);
 
 	useEffect(() => {
 		if (data) {

@@ -5,6 +5,8 @@ import { create } from 'zustand';
 interface IStore {
 	items: IItem[];
 	item: IItem | null;
+	itemId: string | null;
+	setItemWithId: (id: string, item: IItem) => void;
 	itemHistory: number[];
 	setItem: (item: IItem) => void;
 	setItems: (items: IItem[]) => void;
@@ -35,10 +37,12 @@ interface IStore {
 const useStore = create<IStore>((set, get) => ({
 	items: [],
 	item: null,
+	itemId: null,
 	itemHistory: [],
 
 	setItem: (item) => set({ item }),
 	setItems: (items) => set({ items }),
+	setItemWithId: (id, item) => set({ item, itemId: id }),
 	clearItem: () => set({ item: null }),
 
 	randomizePrices: () => {

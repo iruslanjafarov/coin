@@ -36,7 +36,7 @@ import Chart from '@/components/chart';
 
 const Detail = () => {
 	const { id } = useParams<{ id: string }>();
-	const { item, itemHistory, randomizeItemPrice } = useStore();
+	const { item, itemHistory, randomizeItemPrice, itemId } = useStore();
 	const { loading } = useItem(id);
 
 	useEffect(() => {
@@ -47,7 +47,9 @@ const Detail = () => {
 		return () => clearInterval(interval);
 	}, [randomizeItemPrice]);
 
-	if (loading || !item) {
+	const isLoadedItemCorrect = item && itemId === id;
+
+	if (loading || !isLoadedItemCorrect) {
 		return (
 			<main>
 				<section className='my-6'>
