@@ -38,7 +38,7 @@ const Avatar = () => {
 									className='absolute top-full right-0 w-48 rounded-xl border border-gray-200 focus:outline-none z-50'
 								>
 									<MenuItem as={Link} href='/account'>
-										<div className='block px-4 py-2 text-sm tracking-tight hover:bg-gray-100 rounded-xl cursor-pointer'>
+										<div className='block px-4 py-2 text-sm tracking-tight hover:bg-gray-100 rounded-xl cursor-pointer transition-colors duration-200'>
 											Личный кабинет
 										</div>
 									</MenuItem>
