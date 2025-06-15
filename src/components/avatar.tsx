@@ -1,9 +1,9 @@
 'use client';
 
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
-
+import { useRouter } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
+
+import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
 
 import { AnimatePresence } from 'framer-motion';
 
@@ -18,6 +18,16 @@ import AvatarLogo from '@/assets/avatar.jpg';
  */
 
 const Avatar = () => {
+	const router = useRouter();
+
+	const handleAccount = () => {
+		if (localStorage.getItem('isAuth') === 'true') {
+			router.push('/account');
+		} else {
+			router.push('/login');
+		}
+	};
+
 	return (
 		<Menu as='div' className='relative inline-block text-left'>
 			{({ open }) => (
@@ -37,10 +47,13 @@ const Avatar = () => {
 									static
 									className='absolute top-full right-0 w-48 rounded-xl border border-gray-200 focus:outline-none z-50'
 								>
-									<MenuItem as={Link} href='/account'>
-										<div className='block px-4 py-2 text-sm tracking-tight hover:bg-gray-100 rounded-xl cursor-pointer transition-colors duration-200'>
+									<MenuItem>
+										<button
+											className='block px-4 py-2 w-full text-left text-sm tracking-tight hover:bg-gray-100 rounded-xl cursor-pointer transition-colors duration-200'
+											onClick={handleAccount}
+										>
 											Личный кабинет
-										</div>
+										</button>
 									</MenuItem>
 								</MenuItems>
 							</TransitionViewEvery>
