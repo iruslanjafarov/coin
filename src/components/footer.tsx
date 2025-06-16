@@ -26,7 +26,7 @@ const Footer = () => {
 	const { items } = useStore();
 	const pathname: string = usePathname();
 
-	const hideFooterRoutes: string[] = ['/login', '/detail'];
+	const hideFooterRoutes: string[] = ['/login', '/detail', '/account'];
 	const hideFooterCondition: boolean = hideFooterRoutes.some((route) =>
 		pathname.startsWith(route)
 	);
