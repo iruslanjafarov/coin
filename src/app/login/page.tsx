@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
@@ -25,11 +25,21 @@ interface ILoginInputs {
 }
 
 const Login = () => {
-	const { setIsAuth } = useStore();
+	const { isAuth, setIsAuth } = useStore();
 
 	const [isWrong, setIsWrong] = useState(false);
 
 	const router = useRouter();
+
+	useEffect(() => {
+		if (isAuth) {
+			if (window.history.length <= 2) {
+				router.replace('/');
+			} else {
+				router.back();
+			}
+		}
+	}, [isAuth]);
 
 	const {
 		register,
