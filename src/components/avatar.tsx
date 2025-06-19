@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-import { useAuthCondition } from '@/hooks/useAuthCondition';
+import useStore from '@/store/store';
 
 import { Menu, MenuButton, MenuItems } from '@headlessui/react';
 
@@ -22,25 +22,22 @@ import AvatarLogo from '@/assets/avatar.jpg';
 
 const Avatar = () => {
 	const router = useRouter();
-	const authCondtion = useAuthCondition();
+
+	const { isAuth, setIsAuth } = useStore();
 
 	const handleAccount = () => {
-		if (authCondtion) {
-			router.push('/account');
-		} else {
-			router.push('/login');
-		}
-  };
-  
+		router.push(isAuth ? '/account' : '/login');
+	};
+
 	const handleLogout = () => {
-		localStorage.removeItem('isAuth');
+		setIsAuth(false);
 
 		router.replace('/');
 	};
 
 	const avatarButtons = [
 		{ label: 'Личный кабинет', onClick: handleAccount },
-		...(authCondtion ? [{ label: 'Выйти', onClick: handleLogout }] : []),
+		...(isAuth ? [{ label: 'Выйти', onClick: handleLogout }] : []),
 	];
 
 	return (

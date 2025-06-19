@@ -2,6 +2,8 @@ import { IItem } from '@/types/item';
 
 import { create } from 'zustand';
 
+import { devtools, persist } from 'zustand/middleware';
+
 interface IStore {
 	isAuth: boolean;
 	items: IItem[];
@@ -37,49 +39,59 @@ interface IStore {
  * - `randomizeItemPrice()`: simulates a price fluctuation for the selected item and appends the new price to its history.
  */
 
-const useStore = create<IStore>((set, get) => ({
-	isAuth: false,
-	items: [],
-	item: null,
-	itemId: null,
-	itemHistory: [],
+const useStore = create<IStore>()(
+	devtools(
+		persist(
+			(set, get) => ({
+				isAuth: false,
+				items: [],
+				item: null,
+				itemId: null,
+				itemHistory: [],
 
-	setIsAuth: (authState) => set({ isAuth: authState }),
-	setItem: (item) => set({ item }),
-	setItems: (items) => set({ items }),
-	setItemWithId: (id, item) => set({ item, itemId: id }),
-	clearItem: () => set({ item: null }),
+				setIsAuth: (authState) => set({ isAuth: authState }),
+				setItem: (item) => set({ item }),
+				setItems: (items) => set({ items }),
+				setItemWithId: (id, item) => set({ item, itemId: id }),
+				clearItem: () => set({ item: null, itemId: null, itemHistory: [] }),
 
-	randomizePrices: () => {
-		const updated = get().items.map((item) => {
-			const change = Math.floor(Math.random() * 10) - 5;
-			const newPrice = Math.max(0.01, item.price + change);
-			return {
-				...item,
-				prevPrice: item.price,
-				price: newPrice,
-			};
-		});
-		set({ items: updated });
-	},
+				randomizePrices: () => {
+					const updated = get().items.map((item) => {
+						const change = Math.floor(Math.random() * 10) - 5;
+						const newPrice = Math.max(0.01, item.price + change);
+						return {
+							...item,
+							prevPrice: item.price,
+							price: newPrice,
+						};
+					});
+					set({ items: updated });
+				},
 
-	randomizeItemPrice: () => {
-		const currentItem = get().item;
-		if (!currentItem) return;
+				randomizeItemPrice: () => {
+					const currentItem = get().item;
+					if (!currentItem) return;
 
-		const change = Math.floor(Math.random() * 10) - 5;
-		const newPrice = Math.max(0.01, currentItem.price + change);
-		const updatedItem = {
-			...currentItem,
-			prevPrice: currentItem.price,
-			price: newPrice,
-		};
+					const change = Math.floor(Math.random() * 10) - 5;
+					const newPrice = Math.max(0.01, currentItem.price + change);
+					const updatedItem = {
+						...currentItem,
+						prevPrice: currentItem.price,
+						price: newPrice,
+					};
 
-		set((state) => ({
-			item: updatedItem,
-			itemHistory: [...state.itemHistory.slice(-9), newPrice],
-		}));
-	},
-}));
+					set((state) => ({
+						item: updatedItem,
+						itemHistory: [...state.itemHistory.slice(-9), newPrice],
+					}));
+				},
+			}),
+			{
+				name: 'auth-state',
+				partialize: (state) => ({ isAuth: state.isAuth }),
+			}
+		)
+	)
+);
 
 export default useStore;

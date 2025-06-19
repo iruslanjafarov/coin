@@ -4,7 +4,7 @@ import { useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import { useGuestRedirect } from '@/hooks/useGuestRedirect';
+import useStore from '@/store/store';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -25,9 +25,9 @@ interface ILoginInputs {
 }
 
 const Login = () => {
-	const [isWrong, setIsWrong] = useState(false);
+	const { setIsAuth } = useStore();
 
-	useGuestRedirect();
+	const [isWrong, setIsWrong] = useState(false);
 
 	const router = useRouter();
 
@@ -41,8 +41,8 @@ const Login = () => {
 		setIsWrong(false);
 
 		if (data?.email === 'jafarov@jafarov.store' && data?.password === '123') {
-			localStorage.setItem('isAuth', 'true');
-			router.push('/');
+			setIsAuth(true);
+			router.replace('/');
 		} else {
 			setIsWrong(true);
 		}
