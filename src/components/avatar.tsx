@@ -3,34 +3,49 @@
 import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 
-import { Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react';
+import useStore from '@/store/store';
+
+import { Menu, MenuButton, MenuItems } from '@headlessui/react';
 
 import { AnimatePresence } from 'framer-motion';
 
 import TransitionViewEvery from './transitionViewEvery';
+import AvatarButton from './avatarButton';
 
 import AvatarLogo from '@/assets/avatar.jpg';
 
 /**
- * Avatar component that renders a user avatar with a dropdown menu.
+ * Компонент аватара пользователя с выпадающим меню.
  *
- * @returns JSX.Element representing the avatar with a dropdown menu.
+ * Отображает аватар с меню, в котором есть ссылки на личный кабинет и выход.
+ * Кнопки меню меняются в зависимости от состояния авторизации пользователя.
+ *
+ * @returns JSX-элемент, представляющий аватар с выпадающим меню.
  */
 
 const Avatar = () => {
 	const router = useRouter();
 
+	const { isAuth, setIsAuth } = useStore();
+
 	const handleAccount = () => {
-		if (localStorage.getItem('isAuth') === 'true') {
-			router.push('/account');
-		} else {
-			router.push('/login');
-		}
+		router.push(isAuth ? '/account' : '/login');
 	};
+
+	const handleLogout = () => {
+		setIsAuth(false);
+
+		router.replace('/');
+	};
+
+	const avatarButtons = [
+		{ label: 'Личный кабинет', onClick: handleAccount },
+		...(isAuth ? [{ label: 'Выйти', onClick: handleLogout }] : []),
+	];
 
 	return (
 		<Menu as='div' className='relative inline-block text-left'>
-			{({ open }) => (
+			{({ open, close }) => (
 				<>
 					<MenuButton className='rounded-full focus:outline-none focus:border-[#FFD700] focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2'>
 						<Image
@@ -45,16 +60,19 @@ const Avatar = () => {
 							<TransitionViewEvery index={0}>
 								<MenuItems
 									static
-									className='absolute top-full right-0 w-48 rounded-xl border border-gray-200 focus:outline-none z-50'
+									className='absolute top-full right-0 w-48 bg-white rounded-xl border border-gray-200 focus:outline-none z-50'
 								>
-									<MenuItem>
-										<button
-											className='block px-4 py-2 w-full text-left text-sm tracking-tight hover:bg-gray-100 rounded-xl cursor-pointer transition-colors duration-200'
-											onClick={handleAccount}
+									{avatarButtons.map(({ label, onClick }) => (
+										<AvatarButton
+											key={label}
+											onClick={() => {
+												onClick();
+												close();
+											}}
 										>
-											Личный кабинет
-										</button>
-									</MenuItem>
+											{label}
+										</AvatarButton>
+									))}
 								</MenuItems>
 							</TransitionViewEvery>
 						)}

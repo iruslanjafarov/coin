@@ -1,10 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import { useGuestRedirect } from '@/hooks/useGuestRedirect';
+import useStore from '@/store/store';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -12,11 +12,11 @@ import Container from '@/components/container';
 import FormInput from '@/components/formInput';
 
 /**
- * Login page component.
+ * Компонент страницы входа.
  *
- * This component renders the login page, including a form with email and password fields.
+ * Отображает страницу входа, включая форму с полями электронной почты и пароля.
  *
- * @returns A layout container with the login form elements.
+ * @returns Контейнер с элементами формы для авторизации.
  */
 
 interface ILoginInputs {
@@ -25,11 +25,21 @@ interface ILoginInputs {
 }
 
 const Login = () => {
+	const { isAuth, setIsAuth } = useStore();
+
 	const [isWrong, setIsWrong] = useState(false);
 
-	useGuestRedirect();
-
 	const router = useRouter();
+
+	useEffect(() => {
+		if (isAuth) {
+			if (window.history.length <= 2) {
+				router.replace('/');
+			} else {
+				router.back();
+			}
+		}
+	}, [isAuth]);
 
 	const {
 		register,
@@ -41,8 +51,8 @@ const Login = () => {
 		setIsWrong(false);
 
 		if (data?.email === 'jafarov@jafarov.store' && data?.password === '123') {
-			localStorage.setItem('isAuth', 'true');
-			router.push('/');
+			setIsAuth(true);
+			router.replace('/');
 		} else {
 			setIsWrong(true);
 		}

@@ -8,25 +8,24 @@ import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 
 /**
- * Item component that displays a single cryptocurrency/item
- * with its thumbnail, name, current price, and dynamic price coloring.
+ * Компонент Item, отображающий одну криптовалюту или элемент
+ * с миниатюрой, названием, текущей ценой и динамическим цветом цены.
  *
- * The component is clickable and redirects to a detail page for the item.
- * It highlights price changes with color:
- * - Green when the price goes up
- * - Red when the price goes down
- * - Gray when unchanged
+ * Компонент кликабельный и ведёт на страницу с деталями элемента.
+ * Подсвечивает изменение цены цветом:
+ * - зелёным при росте,
+ * - красным при падении,
+ * - серым при отсутствии изменений.
  *
- * Includes smooth color transitions for better UX.
+ * Включены плавные переходы цвета для лучшего UX.
  *
- * @component
- * @param props - The properties passed to the component.
- * @param props.id - The unique identifier for the item.
- * @param props.thumbnail - The URL of the item's thumbnail image.
- * @param props.name - The name of the item.
- * @param props.price - The current price of the item.
- * @param props.prevPrice - The previous price of the item, used to detect and highlight price changes.
- * @returns A styled component representing a single item in the list.
+ * @param props - Свойства, передаваемые компоненту.
+ * @param props.id - Уникальный идентификатор элемента.
+ * @param props.thumbnail - URL миниатюры элемента.
+ * @param props.name - Название элемента.
+ * @param props.price - Текущая цена элемента.
+ * @param props.prevPrice - Предыдущая цена, используется для определения и подсветки изменений цены.
+ * @returns Стилизованный компонент, представляющий один элемент списка.
  */
 
 const Item: FC<IItem> = ({ id, thumbnail, name, price, prevPrice }) => {

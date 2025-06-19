@@ -14,12 +14,13 @@ import MasterCard from '@/assets/mastercard.svg';
 import TransitionViewEvery from './transitionViewEvery';
 
 /**
- * Footer Component
+ * Компонент Footer — подвал приложения.
  *
- * A functional React component that renders the footer section of the application.
- * Displays supported payment methods and a copyright notice.
+ * Отображает логотипы поддерживаемых методов оплаты и копирайт.
+ * Подвал скрывается на некоторых маршрутах (например, логин, детали, аккаунт)
+ * и при отсутствии элементов.
  *
- * @returns The footer section containing payment method logos and a copyright notice.
+ * @returns Разметка подвала с логотипами платёжных систем и информацией о копирайте.
  */
 
 const Footer = () => {

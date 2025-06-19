@@ -2,12 +2,16 @@ import { IItem } from '@/types/item';
 
 import { create } from 'zustand';
 
+import { devtools, persist } from 'zustand/middleware';
+
 interface IStore {
+	isAuth: boolean;
 	items: IItem[];
 	item: IItem | null;
 	itemId: string | null;
 	setItemWithId: (id: string, item: IItem) => void;
 	itemHistory: number[];
+	setIsAuth: (authState: boolean) => void;
 	setItem: (item: IItem) => void;
 	setItems: (items: IItem[]) => void;
 	clearItem: () => void;
@@ -16,65 +20,82 @@ interface IStore {
 }
 
 /**
- * Zustand store for managing a list of items (e.g. cryptocurrencies),
- * as well as a selected item for detailed view, and its price history.
+ * Zustand стор `useStore`, управляющий состоянием элементов (например, криптовалют) и аутентификацией пользователя.
  *
- * Store state includes:
- * - `items`: the full list of cryptocurrency items.
- * - `item`: the currently selected item (used on detail pages).
- * - `itemHistory`: an array of past price values for the selected item, used for rendering charts.
+ * Хранит и управляет:
+ * - `isAuth`: флаг, указывающий, авторизован ли пользователь. Сохраняется в localStorage для сохранения состояния между сессиями.
+ * - `items`: список всех доступных элементов.
+ * - `item`: текущий выбранный элемент (например, для детального просмотра).
+ * - `itemId`: ID текущего выбранного элемента.
+ * - `itemHistory`: история цен выбранного элемента, ограниченная 10 значениями (для отображения графиков).
  *
- * Store actions include:
- * - `setItems`: sets the full list of items.
- * - `setItem`: sets the currently selected item and resets `itemHistory`.
- * - `clearItem`: clears the selected item and price history.
- * - `randomizePrices`: simulates live price changes for all items in the list.
- * - `randomizeItemPrice`: simulates price fluctuation for the selected item and appends to `itemHistory`.
+ * Методы для управления состоянием:
+ * - `setIsAuth(authState)`: установить состояние аутентификации.
+ * - `setItems(items)`: установить список элементов.
+ * - `setItem(item)`: установить текущий выбранный элемент.
+ * - `setItemWithId(id, item)`: установить элемент и его ID.
+ * - `clearItem()`: очистить выбранный элемент, ID и историю цен.
+ * - `randomizePrices()`: симулировать случайное изменение цен для всех элементов (±5), удобно для имитации обновлений.
+ * - `randomizeItemPrice()`: симулировать изменение цены выбранного элемента и добавить новое значение в историю.
  *
- * @returns Zustand store with managed state and update functions for crypto UI behavior.
+ * Использует middleware:
+ * - `persist` для сохранения только `isAuth` в localStorage (ключ `auth-state`).
+ * - `devtools` для интеграции с Redux DevTools.
  */
 
-const useStore = create<IStore>((set, get) => ({
-	items: [],
-	item: null,
-	itemId: null,
-	itemHistory: [],
+const useStore = create<IStore>()(
+	devtools(
+		persist(
+			(set, get) => ({
+				isAuth: false,
+				items: [],
+				item: null,
+				itemId: null,
+				itemHistory: [],
 
-	setItem: (item) => set({ item }),
-	setItems: (items) => set({ items }),
-	setItemWithId: (id, item) => set({ item, itemId: id }),
-	clearItem: () => set({ item: null }),
+				setIsAuth: (authState) => set({ isAuth: authState }),
+				setItem: (item) => set({ item }),
+				setItems: (items) => set({ items }),
+				setItemWithId: (id, item) => set({ item, itemId: id }),
+				clearItem: () => set({ item: null, itemId: null, itemHistory: [] }),
 
-	randomizePrices: () => {
-		const updated = get().items.map((item) => {
-			const change = Math.floor(Math.random() * 10) - 5;
-			const newPrice = Math.max(0.01, item.price + change);
-			return {
-				...item,
-				prevPrice: item.price,
-				price: newPrice,
-			};
-		});
-		set({ items: updated });
-	},
+				randomizePrices: () => {
+					const updated = get().items.map((item) => {
+						const change = Math.floor(Math.random() * 10) - 5;
+						const newPrice = Math.max(0.01, item.price + change);
+						return {
+							...item,
+							prevPrice: item.price,
+							price: newPrice,
+						};
+					});
+					set({ items: updated });
+				},
 
-	randomizeItemPrice: () => {
-		const currentItem = get().item;
-		if (!currentItem) return;
+				randomizeItemPrice: () => {
+					const currentItem = get().item;
+					if (!currentItem) return;
 
-		const change = Math.floor(Math.random() * 10) - 5;
-		const newPrice = Math.max(0.01, currentItem.price + change);
-		const updatedItem = {
-			...currentItem,
-			prevPrice: currentItem.price,
-			price: newPrice,
-		};
+					const change = Math.floor(Math.random() * 10) - 5;
+					const newPrice = Math.max(0.01, currentItem.price + change);
+					const updatedItem = {
+						...currentItem,
+						prevPrice: currentItem.price,
+						price: newPrice,
+					};
 
-		set((state) => ({
-			item: updatedItem,
-			itemHistory: [...state.itemHistory.slice(-9), newPrice],
-		}));
-	},
-}));
+					set((state) => ({
+						item: updatedItem,
+						itemHistory: [...state.itemHistory.slice(-9), newPrice],
+					}));
+				},
+			}),
+			{
+				name: 'auth-state',
+				partialize: (state) => ({ isAuth: state.isAuth }),
+			}
+		)
+	)
+);
 
 export default useStore;

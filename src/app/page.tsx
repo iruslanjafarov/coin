@@ -11,10 +11,10 @@ import Item from '@/components/main/item';
 import TransitionViewEvery from '@/components/transitionViewEvery';
 
 /**
- * Main component for displaying items with a loading spinner while data is being fetched.
- * It uses a custom hook `useItems` to retrieve the data and show a spinner during loading.
+ * Основной компонент для отображения списка элементов с индикатором загрузки во время получения данных.
+ * Использует кастомный хук `useItems` для загрузки данных и отображает спиннер при загрузке.
  *
- * @returns The main section of the page containing items or a loading spinner.
+ * @returns Основной раздел страницы с элементами или индикатором загрузки.
  */
 
 const Main = () => {

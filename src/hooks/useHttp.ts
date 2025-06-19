@@ -5,13 +5,13 @@ import { useCallback, useEffect, useState } from 'react';
 import ky from 'ky';
 
 /**
- * Custom hook to fetch data from an API using `ky` and manage loading state.
- * It fetches data from the provided URL and handles loading and error states.
+ * Кастомный хук для загрузки данных с API с использованием `ky` и управления состоянием загрузки.
+ * Выполняет запрос по переданному URL и обрабатывает состояния загрузки и ошибок.
  *
- * @param url - The URL to fetch data from.
- * @returns An object with the following properties:
- * - `data`: The fetched data or null if data is not yet available.
- * - `loading`: The loading state indicating if the data is being fetched.
+ * @param url - URL для получения данных.
+ * @returns Объект с полями:
+ * - `data`: загруженные данные или null, если данные ещё не получены.
+ * - `loading`: булевое значение, показывающее состояние загрузки.
  */
 
 const useHttp = <T>(url: string) => {

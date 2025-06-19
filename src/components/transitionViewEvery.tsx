@@ -8,13 +8,13 @@ interface ITransitionViewEvery {
 }
 
 /**
- * A motion component that animates its children with a fade and slide effect.
- * The animation applies a delay based on the index of the item to create staggered effects.
+ * Компонент анимации, который плавно отображает детей с эффектом затухания и смещения.
+ * Задержка анимации рассчитывается на основе индекса, создавая эффект поочередного появления.
  *
- * @param props - The properties passed to the component.
- * @param props.children - The child elements to be animated.
- * @param props.index - The index used to control the delay of the animation.
- * @returns The animated container that wraps the children.
+ * @param props - Свойства компонента.
+ * @param props.children - Дочерние элементы, которые будут анимированы.
+ * @param props.index - Индекс, определяющий задержку анимации.
+ * @returns Обёртка с анимацией, содержащая дочерние элементы.
  */
 
 const TransitionViewEvery: FC<ITransitionViewEvery> = ({ children, index }) => {

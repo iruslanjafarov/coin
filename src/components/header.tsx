@@ -10,9 +10,9 @@ import Avatar from './avatar';
 import Icon from '@/assets/icon.svg';
 
 /**
- * Header component that displays the site logo (icon) and a link to the personal account.
+ * Компонент Header, отображающий логотип сайта (иконку) и ссылку на личный кабинет.
  *
- * @returns The header of the page containing the logo and the personal account button.
+ * @returns Шапка страницы с логотипом и кнопкой личного кабинета.
  */
 
 const Header = () => {
