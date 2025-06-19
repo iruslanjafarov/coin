@@ -7,13 +7,13 @@ interface ILoginLayout {
 }
 
 /**
- * LoginLayout component used to wrap the login page.
+ * Компонент `LoginLayout`, используемый для обёртки страницы входа.
  *
- * This layout component simply returns the passed children without any additional layout structure.
- * Useful for isolating the login route from the main application layout (e.g., without a header or sidebar).
+ * Этот макет просто возвращает переданные дочерние элементы без дополнительной структуры.
+ * Полезен для изоляции маршрута авторизации от основной части приложения (например, без хедера или бокового меню).
  *
- * @param children - The React nodes to be rendered within the layout.
- * @returns The rendered children.
+ * @param children - React-элементы, которые будут отображаться внутри макета.
+ * @returns Отрисованные дочерние элементы.
  */
 
 const LoginLayout: FC<ILoginLayout> = ({ children }) => {

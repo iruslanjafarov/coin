@@ -20,23 +20,27 @@ interface IStore {
 }
 
 /**
- * Zustand store `useStore` that manages the state related to items (e.g., cryptocurrencies) and user authentication.
+ * Zustand стор `useStore`, управляющий состоянием элементов (например, криптовалют) и аутентификацией пользователя.
  *
- * Contains:
- * - `isAuth`: a boolean flag indicating if the user is authenticated.
- * - `items`: a list of all available items.
- * - `item`: the currently selected item (e.g., for a detailed view).
- * - `itemId`: the ID of the currently selected item.
- * - `itemHistory`: an array containing the price history of the selected item, capped at 10 values (used for charts).
+ * Хранит и управляет:
+ * - `isAuth`: флаг, указывающий, авторизован ли пользователь. Сохраняется в localStorage для сохранения состояния между сессиями.
+ * - `items`: список всех доступных элементов.
+ * - `item`: текущий выбранный элемент (например, для детального просмотра).
+ * - `itemId`: ID текущего выбранного элемента.
+ * - `itemHistory`: история цен выбранного элемента, ограниченная 10 значениями (для отображения графиков).
  *
- * Actions:
- * - `setIsAuth(authState)`: sets the authentication state.
- * - `setItems(items)`: sets the full list of items.
- * - `setItem(item)`: sets the currently selected item.
- * - `setItemWithId(id, item)`: sets both the item and its ID.
- * - `clearItem()`: clears the selected item, its ID, and its price history.
- * - `randomizePrices()`: simulates random price changes across all items (±5), useful for mocking live updates.
- * - `randomizeItemPrice()`: simulates a price fluctuation for the selected item and appends the new price to its history.
+ * Методы для управления состоянием:
+ * - `setIsAuth(authState)`: установить состояние аутентификации.
+ * - `setItems(items)`: установить список элементов.
+ * - `setItem(item)`: установить текущий выбранный элемент.
+ * - `setItemWithId(id, item)`: установить элемент и его ID.
+ * - `clearItem()`: очистить выбранный элемент, ID и историю цен.
+ * - `randomizePrices()`: симулировать случайное изменение цен для всех элементов (±5), удобно для имитации обновлений.
+ * - `randomizeItemPrice()`: симулировать изменение цены выбранного элемента и добавить новое значение в историю.
+ *
+ * Использует middleware:
+ * - `persist` для сохранения только `isAuth` в localStorage (ключ `auth-state`).
+ * - `devtools` для интеграции с Redux DevTools.
  */
 
 const useStore = create<IStore>()(

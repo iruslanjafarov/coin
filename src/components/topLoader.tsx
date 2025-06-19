@@ -3,12 +3,12 @@ import NextTopLoader from 'nextjs-toploader';
 /**
  * TopLoader
  *
- * A global top-loading bar component using `nextjs-toploader`.
- * 
- * It renders a visual loading indicator at the top of the page during route changes.
- * Styled with a custom yellow color and easing animation. Spinner is disabled for cleaner look.
+ * Глобальный компонент индикатора загрузки в верхней части страницы с использованием `nextjs-toploader`.
  *
- * @returns JSX element representing the top-loading progress bar.
+ * Отображает визуальную полоску загрузки при смене маршрутов.
+ * Стилизован с использованием желтого цвета и плавной анимации. Спиннер отключен для более чистого вида.
+ *
+ * @returns JSX-элемент, представляющий индикатор прогресса загрузки.
  */
 
 const TopLoader = () => (

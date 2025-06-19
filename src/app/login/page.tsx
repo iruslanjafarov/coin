@@ -12,11 +12,11 @@ import Container from '@/components/container';
 import FormInput from '@/components/formInput';
 
 /**
- * Login page component.
+ * Компонент страницы входа.
  *
- * This component renders the login page, including a form with email and password fields.
+ * Отображает страницу входа, включая форму с полями электронной почты и пароля.
  *
- * @returns A layout container with the login form elements.
+ * @returns Контейнер с элементами формы для авторизации.
  */
 
 interface ILoginInputs {

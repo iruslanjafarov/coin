@@ -26,12 +26,12 @@ interface IRootLayout {
 }
 
 /**
- * Root layout component that wraps the entire page with necessary meta information and structure.
- * It includes the header and passes the children content within the body.
+ * Корневой layout-компонент, оборачивающий всю страницу и добавляющий необходимые метаданные и структуру.
+ * Включает шапку (Header) и оборачивает переданный контент внутри тега body.
  *
- * @param props - The properties passed to the layout component.
- * @param props.children - The child components or elements to be rendered within the body.
- * @returns The JSX structure of the root layout.
+ * @param props - Свойства, передаваемые в компонент layout.
+ * @param props.children - Дочерние компоненты или элементы, которые будут отрендерены внутри body.
+ * @returns JSX-структура корневого layout.
  */
 
 const RootLayout: FC<IRootLayout> = ({ children }) => {

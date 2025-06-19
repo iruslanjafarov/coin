@@ -1,12 +1,12 @@
 /**
- * Interface representing a single item (e.g. a cryptocurrency).
+ * Интерфейс, описывающий один элемент (например, криптовалюту).
  *
  * @interface IItem
- * @property id - The unique numeric identifier for the item.
- * @property thumbnail - The URL string of the item's thumbnail image.
- * @property name - The name of the item (e.g. token name).
- * @property price - The current numeric price of the item.
- * @property prevPrice - (Optional) The previous price of the item, used to determine price changes.
+ * @property id - Уникальный числовой идентификатор элемента.
+ * @property thumbnail - URL-строка с миниатюрой изображения элемента.
+ * @property name - Название элемента (например, название токена).
+ * @property price - Текущая числовая цена элемента.
+ * @property prevPrice - (Опционально) Предыдущая цена элемента, используется для определения изменений цены.
  */
 
 export interface IItem {

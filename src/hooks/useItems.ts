@@ -7,11 +7,11 @@ import useStore from '@/store/store';
 import { useEffect } from 'react';
 
 /**
- * Custom hook to fetch a list of items (currencies) using the `useHttp` hook.
- * This hook provides the data and loading state for the list of items.
+ * Кастомный хук для загрузки списка элементов (валют) с помощью хука `useHttp`.
+ * Предоставляет данные и состояние загрузки для списка элементов.
  *
- * @returns The hook returns an object with the following property:
- * @returns {loading} - The loading state indicating if the data is being fetched.
+ * @returns Объект с полем:
+ * - `loading` — булевое значение, показывающее, идет ли загрузка данных.
  */
 
 const useItems = () => {

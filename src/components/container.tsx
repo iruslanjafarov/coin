@@ -6,13 +6,13 @@ interface IContainer {
 }
 
 /**
- * Container component that wraps its children inside a div with a maximum width
- * and optional custom class name for styling.
+ * Компонент контейнера, который оборачивает дочерние элементы в div с максимальной шириной
+ * и опциональным пользовательским классом для стилизации.
  *
- * @param props - The properties passed to the container component.
- * @param props.children - The child components or elements to be rendered inside the container.
- * @param props.className - Optional custom class name for additional styling.
- * @returns The container component with children and custom class name.
+ * @param props - Свойства, передаваемые в компонент контейнера.
+ * @param props.children - Дочерние компоненты или элементы, которые будут отрендерены внутри контейнера.
+ * @param props.className - Опциональный класс для дополнительной стилизации.
+ * @returns Контейнер с дочерними элементами и применённым классом.
  */
 
 const Container: FC<IContainer> = ({ children, className }) => {

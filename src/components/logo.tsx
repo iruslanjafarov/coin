@@ -9,18 +9,17 @@ interface ILogo {
 }
 
 /**
- * Logo Component
+ * Компонент Logo — функциональный React-компонент для отображения логотипа в виде изображения.
  *
- * A functional React component that displays an image logo. The logo is wrapped in a `div` with background and padding for styling.
- * Optionally, additional CSS classes can be passed through the `className` prop to customize the appearance of the container.
- * The logo image is responsive, and the size is fixed at 32px width.
+ * Логотип обёрнут в div с фоном и отступами для стилизации.
+ * Дополнительно можно передать CSS-класс через `className` для кастомизации внешнего вида контейнера.
+ * Изображение логотипа адаптивное, ширина фиксирована 32px.
  *
- * @component
- * @param props - Component props.
- * @param props.src - The source URL of the logo image.
- * @param props.alt - The alt text for the logo image.
- * @param [props.className=''] - Optional additional CSS class to style the container.
- * @returns A element representing the logo wrapped in a styled container.
+ * @param props - Свойства компонента.
+ * @param props.src - URL-адрес изображения логотипа.
+ * @param props.alt - Альтернативный текст для изображения логотипа.
+ * @param [props.className=''] - Опциональный CSS-класс для стилизации контейнера.
+ * @returns Элемент, представляющий логотип в стилизованном контейнере.
  */
 
 const Logo: FC<ILogo> = ({ src, alt, className = '' }) => {

@@ -6,15 +6,15 @@ interface IAvatarButton {
 }
 
 /**
- * AvatarButton component used within a dropdown menu under the user's avatar.
+ * Компонент кнопки для выпадающего меню под аватаром пользователя.
  *
- * Renders a styled button element for dropdown actions such as
- * navigation or logout. Designed to be reusable with consistent styling.
+ * Отрисовывает стилизованную кнопку для действий в меню, таких как
+ * навигация или выход из аккаунта. Предназначен для повторного использования с единым стилем.
  *
- * @param onClick - Callback function triggered on button click.
- * @param children - React node representing the button's content.
+ * @param onClick - Функция обратного вызова, вызываемая при клике на кнопку.
+ * @param children - React-узел, представляющий содержимое кнопки.
  *
- * @returns JSX.Element - A styled button used inside avatar dropdown.
+ * @returns JSX-элемент — стилизованная кнопка для использования внутри выпадающего меню аватара.
  */
 
 const AvatarButton: FC<IAvatarButton> = ({ onClick, children }) => {

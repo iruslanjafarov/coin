@@ -7,12 +7,12 @@ import useStore from '@/store/store';
 import { useEffect } from 'react';
 
 /**
- * Custom hook for fetching a single item (e.g., a cryptocurrency) based on its ID.
- * When the ID changes, it clears the previously selected item from the Zustand store to prevent showing outdated data.
- * It then performs a fetch using `useHttp` and updates the store with the retrieved item.
+ * Кастомный хук для загрузки одного элемента (например, криптовалюты) по его ID.
+ * При смене ID очищает предыдущий выбранный элемент из Zustand-хранилища, чтобы не показывать устаревшие данные.
+ * Затем выполняет запрос через `useHttp` и обновляет хранилище полученным элементом.
  *
- * @param id - A string representing the unique ID of the item to fetch.
- * @returns An object containing the `loading` boolean, which indicates whether the fetch operation is in progress.
+ * @param id - Строка с уникальным идентификатором элемента для загрузки.
+ * @returns Объект с полем `loading`, указывающим на процесс загрузки.
  */
 
 const useItem = (id: string) => {

@@ -7,10 +7,10 @@ interface IAccountLayout {
 }
 
 /**
- * AccountLayout component used to wrap the account-related pages.
+ * Компонент `AccountLayout`, используемый для обёртки страниц, связанных с личным кабинетом.
  *
- * @param children - The React nodes to be rendered within the layout.
- * @returns The rendered children.
+ * @param children - React-элементы, которые будут отображаться внутри макета.
+ * @returns Отрисованные дочерние элементы.
  */
 
 const AccountLayout: FC<IAccountLayout> = ({ children }) => {

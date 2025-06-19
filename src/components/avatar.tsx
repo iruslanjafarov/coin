@@ -15,9 +15,12 @@ import AvatarButton from './avatarButton';
 import AvatarLogo from '@/assets/avatar.jpg';
 
 /**
- * Avatar component that renders a user avatar with a dropdown menu.
+ * Компонент аватара пользователя с выпадающим меню.
  *
- * @returns JSX.Element representing the avatar with a dropdown menu.
+ * Отображает аватар с меню, в котором есть ссылки на личный кабинет и выход.
+ * Кнопки меню меняются в зависимости от состояния авторизации пользователя.
+ *
+ * @returns JSX-элемент, представляющий аватар с выпадающим меню.
  */
 
 const Avatar = () => {

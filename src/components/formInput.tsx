@@ -18,16 +18,16 @@ interface FormInputProps<T extends FieldValues> {
 }
 
 /**
- * Reusable input component integrated with react-hook-form.
+ * Повторно используемый компонент поля ввода, интегрированный с react-hook-form.
  *
- * @param type - Input type (e.g., "email", "password").
- * @param name - Name of the field, matches key in form values.
- * @param label - Optional field label.
- * @param placeholder - Optional placeholder text.
- * @param register - react-hook-form's register function.
- * @param required - Whether the field is required.
- * @param error - Optional error object for validation state.
- * @returns Controlled input connected to react-hook-form.
+ * @param type - Тип поля ввода (например, "email" или "password").
+ * @param name - Имя поля, соответствующее ключу в данных формы.
+ * @param label - Опциональная метка поля.
+ * @param placeholder - Опциональный плейсхолдер.
+ * @param register - Функция регистрации из react-hook-form.
+ * @param required - Флаг обязательности поля.
+ * @param error - Опциональный объект ошибки для отображения состояния валидации.
+ * @returns Контролируемое поле ввода, связанное с react-hook-form.
  */
 
 const FormInput = <T extends FieldValues>({

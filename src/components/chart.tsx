@@ -28,14 +28,13 @@ interface IChartProps {
 }
 
 /**
- * Chart component for visualizing price data using a line graph.
+ * Компонент графика для визуализации ценовых данных в виде линейного графика.
  *
+ * @param labels - Массив меток времени для оси X (скрытой).
+ * @param data - Массив числовых значений цен.
+ * @param colorState - Состояние тренда линии графика: 'up' (рост), 'down' (падение) или 'same' (без изменений).
  *
- * @param labels - Array of timestamps used for the x-axis (hidden)
- * @param data - Array of numerical price values
- * @param colorState - Trend state of the chart line: 'up', 'down', or 'same'
- *
- * @returns A styled Line chart visualizing price data.
+ * @returns Стилизованный линейный график, отображающий данные о ценах.
  */
 
 const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
