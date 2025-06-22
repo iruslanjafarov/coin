@@ -8,7 +8,7 @@ import {
 } from 'react-hook-form';
 
 interface FormInputProps<T extends FieldValues> {
-	type: 'email' | 'password';
+	type: 'text' | 'email' | 'password';
 	name: Path<T>;
 	label?: string;
 	placeholder?: string;
@@ -20,7 +20,7 @@ interface FormInputProps<T extends FieldValues> {
 /**
  * Повторно используемый компонент поля ввода, интегрированный с react-hook-form.
  *
- * @param type - Тип поля ввода (например, "email" или "password").
+ * @param type - Тип поля ввода.
  * @param name - Имя поля, соответствующее ключу в данных формы.
  * @param label - Опциональная метка поля.
  * @param placeholder - Опциональный плейсхолдер.
