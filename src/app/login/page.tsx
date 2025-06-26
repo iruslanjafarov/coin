@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'nextjs-toploader/app';
 
 import useStore from '@/store/store';
 
@@ -20,12 +20,13 @@ import FormInput from '@/components/formInput';
  */
 
 interface ILoginInputs {
+	name: string;
 	email: string;
 	password: string;
 }
 
 const Login = () => {
-	const { isAuth, setIsAuth } = useStore();
+	const { isAuth, setIsAuth, setName } = useStore();
 
 	const [isWrong, setIsWrong] = useState(false);
 
@@ -52,6 +53,8 @@ const Login = () => {
 
 		if (data?.email === 'jafarov@jafarov.store' && data?.password === '123') {
 			setIsAuth(true);
+			setName(data?.name);
+
 			router.replace('/');
 		} else {
 			setIsWrong(true);
@@ -62,6 +65,15 @@ const Login = () => {
 		<section className='absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-md px-4'>
 			<Container>
 				<form onSubmit={handleSubmit(onSubmit)} className='flex flex-col gap-3'>
+					<FormInput
+						type='text'
+						name='name'
+						label='Имя'
+						placeholder='Введите имя'
+						register={register}
+						required
+						error={errors?.name}
+					/>
 					<FormInput
 						type='email'
 						name='email'

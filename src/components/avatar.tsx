@@ -1,6 +1,6 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'nextjs-toploader/app';
 import Image from 'next/image';
 
 import useStore from '@/store/store';
@@ -60,7 +60,7 @@ const Avatar = () => {
 							<TransitionViewEvery index={0}>
 								<MenuItems
 									static
-									className='absolute top-full right-0 w-48 bg-white rounded-xl border border-gray-200 focus:outline-none z-50'
+									className='absolute p-1 top-full right-0 w-48 bg-white rounded-xl border border-gray-200 focus:outline-none z-50'
 								>
 									{avatarButtons.map(({ label, onClick }) => (
 										<AvatarButton

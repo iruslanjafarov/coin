@@ -6,12 +6,14 @@ import { devtools, persist } from 'zustand/middleware';
 
 interface IStore {
 	isAuth: boolean;
+	name: string;
 	items: IItem[];
 	item: IItem | null;
 	itemId: string | null;
 	setItemWithId: (id: string, item: IItem) => void;
 	itemHistory: number[];
 	setIsAuth: (authState: boolean) => void;
+	setName: (name: string) => void;
 	setItem: (item: IItem) => void;
 	setItems: (items: IItem[]) => void;
 	clearItem: () => void;
@@ -24,6 +26,7 @@ interface IStore {
  *
  * Хранит и управляет:
  * - `isAuth`: флаг, указывающий, авторизован ли пользователь. Сохраняется в localStorage для сохранения состояния между сессиями.
+ * - `name` — имя пользователя, введённое при регистрации/авторизации.
  * - `items`: список всех доступных элементов.
  * - `item`: текущий выбранный элемент (например, для детального просмотра).
  * - `itemId`: ID текущего выбранного элемента.
@@ -31,6 +34,7 @@ interface IStore {
  *
  * Методы для управления состоянием:
  * - `setIsAuth(authState)`: установить состояние аутентификации.
+ * - `setName(name)` — сохраняет имя пользователя.
  * - `setItems(items)`: установить список элементов.
  * - `setItem(item)`: установить текущий выбранный элемент.
  * - `setItemWithId(id, item)`: установить элемент и его ID.
@@ -39,7 +43,7 @@ interface IStore {
  * - `randomizeItemPrice()`: симулировать изменение цены выбранного элемента и добавить новое значение в историю.
  *
  * Использует middleware:
- * - `persist` для сохранения только `isAuth` в localStorage (ключ `auth-state`).
+ * - `persist` для сохранения `isAuth` и `name` в localStorage (ключ `auth-state`).
  * - `devtools` для интеграции с Redux DevTools.
  */
 
@@ -48,12 +52,14 @@ const useStore = create<IStore>()(
 		persist(
 			(set, get) => ({
 				isAuth: false,
+				name: '',
 				items: [],
 				item: null,
 				itemId: null,
 				itemHistory: [],
 
 				setIsAuth: (authState) => set({ isAuth: authState }),
+				setName: (name) => set({ name }),
 				setItem: (item) => set({ item }),
 				setItems: (items) => set({ items }),
 				setItemWithId: (id, item) => set({ item, itemId: id }),
@@ -92,7 +98,7 @@ const useStore = create<IStore>()(
 			}),
 			{
 				name: 'auth-state',
-				partialize: (state) => ({ isAuth: state.isAuth }),
+				partialize: (state) => ({ isAuth: state.isAuth, name: state.name }),
 			}
 		)
 	)
