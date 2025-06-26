@@ -20,7 +20,7 @@ interface IAvatarButton {
 const AvatarButton: FC<IAvatarButton> = ({ onClick, children }) => {
 	return (
 		<button
-			className='block px-4 py-2 w-full text-left text-sm tracking-tight hover:bg-gray-100 rounded-xl cursor-pointer transition-colors duration-200'
+			className='block px-4 py-2 w-full text-left text-sm tracking-tight hover:bg-gray-100 rounded-lg cursor-pointer transition-colors duration-200'
 			onClick={onClick}
 		>
 			{children}
