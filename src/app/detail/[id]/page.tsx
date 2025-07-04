@@ -13,25 +13,12 @@ import Container from '@/components/container';
 import Chart from '@/components/chart';
 
 /**
- * Detail page component that displays information about a selected cryptocurrency.
+ * Компонент страницы деталей, отображающий информацию о выбранной криптовалюте.
  *
- * This component retrieves the current item based on the route parameter (ID),
- * and displays its name, price, image, and a dynamic chart of its price history.
- *
- * Features:
- * - Periodically updates the item's price every 2 seconds to simulate real-time changes.
- * - Displays a line chart with color based on price direction:
- *   - Green for price increase
- *   - Red for price decrease
- *   - Gray for unchanged price
- * - Renders a loading spinner while fetching item data
- *
- * Dependencies:
- * - Zustand store for managing item and its history
- * - `useItem` hook to fetch item data based on ID
- * - `Chart` component for rendering price visualization
- *
- * @returns The JSX layout for the detailed item view.
+ * Этот компонент получает текущий элемент на основе параметра маршрута (ID)
+ * и отображает его название, цену, изображение и динамический график изменения цены.
+ * 
+ * @returns JSX-разметка подробного представления элемента.
  */
 
 const Detail = () => {
