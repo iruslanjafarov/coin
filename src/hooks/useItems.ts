@@ -1,10 +1,11 @@
 'use client';
 
-import { IItem } from '@/types/item';
+//import { IItem } from '@/types/item';
 
-import useHttp from './useHttp';
+//import useHttp from './useHttp';
 import useStore from '@/store/store';
-import { useEffect } from 'react';
+import { getAllItems } from './useDatabase';
+import { useEffect, useState } from 'react';
 
 /**
  * Кастомный хук для загрузки списка элементов (валют) с помощью хука `useHttp`.
@@ -15,16 +16,19 @@ import { useEffect } from 'react';
 
 const useItems = () => {
 	const { setItems } = useStore();
+	const [loading, setLoading] = useState(false);
 
-	const url: string = 'https://spectrum-happy-apology.glitch.me/currencies';
+	//const url: string = 'https://spectrum-happy-apology.glitch.me/currencies';
 
-	const { data, loading } = useHttp<IItem[]>(url);
+	//const { data, loading } = useHttp<IItem[]>(url);
 
 	useEffect(() => {
-		if (data) {
-			setItems(data);
-		}
-	}, [data, setItems]);
+		const items = getAllItems();
+
+		setItems(items);
+
+		setLoading(false);
+	}, [setItems]);
 
 	return { loading };
 };
