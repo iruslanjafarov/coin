@@ -1,0 +1,64 @@
+{
+	"currencies": [
+		{
+			"id": 1,
+			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/bitcoin-btc-logo.svg?v=1744641377316",
+			"name": "Bitcoin",
+			"price": 42000.55
+		},
+		{
+			"id": 2,
+			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/ethereum-eth-logo.svg?v=1744641379536",
+			"name": "Ethereum",
+			"price": 2800.99
+		},
+		{
+			"id": 3,
+			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/solana-sol-logo.svg?v=1744641380994",
+			"name": "Solana",
+			"price": 120.45
+		},
+		{
+			"id": 4,
+			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/cardano-ada-logo.svg?v=1744641375712",
+			"name": "Cardano",
+			"price": 1.25
+		},
+		{
+			"id": 5,
+			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/litecoin-ltc-logo.svg?v=1744641383071",
+			"name": "Litecoin",
+			"price": 150.78
+		},
+		{
+			"id": 6,
+			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/chainlink-link-logo.svg?v=1744641364398",
+			"name": "Chainlink",
+			"price": 24.89
+		},
+		{
+			"id": 7,
+			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/uniswap-uni-logo.svg?v=1744641347859",
+			"name": "Uniswap",
+			"price": 18.45
+		},
+		{
+			"id": 8,
+			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/avalanche-avax-logo.svg?v=1744641368584",
+			"name": "Avalanche",
+			"price": 60.99
+		},
+		{
+			"id": 9,
+			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/pancakeswap-cake-logo.svg?v=1744641370095",
+			"name": "PancakeSwap",
+			"price": 2.75
+		},
+		{
+			"id": 10,
+			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/tron-trx-logo.svg?v=1744641371634",
+			"name": "Tron",
+			"price": 0.08
+		}
+	]
+}

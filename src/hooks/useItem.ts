@@ -1,10 +1,11 @@
 'use client';
 
-import { IItem } from '@/types/item';
+//import { IItem } from '@/types/item';
 
-import useHttp from './useHttp';
+//import useHttp from './useHttp';
 import useStore from '@/store/store';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { getItemById } from './useDatabase';
 
 /**
  * Кастомный хук для загрузки одного элемента (например, криптовалюты) по его ID.
@@ -17,26 +18,23 @@ import { useEffect } from 'react';
 
 const useItem = (id: string) => {
 	const { clearItem, setItem, setItemWithId } = useStore();
+	const [loading, setLoading] = useState(false);
 
-	const url: string = `https://spectrum-happy-apology.glitch.me/currencies/${id}`;
+	//const url: string = `https://spectrum-happy-apology.glitch.me/currencies/${id}`;
 
-	const { data, loading } = useHttp<IItem>(url);
+	//const { data, loading } = useHttp<IItem>(url);
 
 	useEffect(() => {
 		clearItem();
-	}, [id]);
 
-	useEffect(() => {
-		if (data) {
-			setItemWithId(id, data);
-		}
-	}, [data, id]);
+		const item = getItemById(id);
 
-	useEffect(() => {
-		if (data) {
-			setItem(data);
+		if (item) {
+			setItem(item);
+			setItemWithId(id, item);
 		}
-	}, [data, setItem]);
+		setLoading(false);
+	}, [id, clearItem, setItem, setItemWithId]);
 
 	return { loading };
 };
