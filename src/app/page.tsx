@@ -1,14 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
-
-import useStore from '@/store/store';
-import useItems from '@/hooks/useItems';
-
-import Spinner from '@/components/spinner';
 import Container from '@/components/container';
-import Item from '@/components/main/item';
-import TransitionViewEvery from '@/components/transitionViewEvery';
 
 /**
  * Основной компонент для отображения списка элементов с индикатором загрузки во время получения данных.
@@ -18,39 +10,13 @@ import TransitionViewEvery from '@/components/transitionViewEvery';
  */
 
 const Main = () => {
-	const { items, randomizePrices } = useStore();
-	const { loading } = useItems();
-
-	useEffect(() => {
-		const interval = setInterval(() => {
-			randomizePrices();
-		}, 2000);
-
-		return () => clearInterval(interval);
-	}, [randomizePrices]);
-
 	return (
 		<main>
-			<section className='my-6'>
-				<Container>
-					{loading && (
-						<div className='w-full h-full absolute top-0 left-0 flex justify-center items-center'>
-							<Spinner />
-						</div>
-					)}
-					<div className='flex flex-col gap-3'>
-						{items?.map(({ id, thumbnail, name, price, prevPrice }) => (
-							<TransitionViewEvery index={id} key={id}>
-								<Item
-									id={id}
-									thumbnail={thumbnail}
-									name={name}
-									price={price}
-									prevPrice={prevPrice}
-								/>
-							</TransitionViewEvery>
-						))}
-					</div>
+			<section className='flex w-full h-full fixed justify-center items-center'>
+				<Container className='flex justify-center items-center'>
+					<h1 className='bg-black text-white text-4xl w-fit text-center px-1 py-2 rounded-lg'>
+						Продукт в разработке
+					</h1>
 				</Container>
 			</section>
 		</main>
