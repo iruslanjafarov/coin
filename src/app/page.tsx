@@ -14,7 +14,7 @@ const Main = () => {
 		<main>
 			<section className='flex w-full h-full fixed justify-center items-center'>
 				<Container className='flex justify-center items-center'>
-					<h1 className='bg-black text-white text-4xl w-fit text-center px-1 py-2 rounded-lg'>
+					<h1 className='bg-black text-white text-5xl w-fit text-center px-1 py-2 rounded-lg'>
 						Продукт в разработке
 					</h1>
 				</Container>
