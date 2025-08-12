@@ -18,7 +18,7 @@ ChartJS.register(
 	CategoryScale,
 	LinearScale,
 	PointElement,
-	Tooltip
+	Tooltip,
 );
 
 interface IChartProps {
@@ -37,13 +37,13 @@ interface IChartProps {
  * @returns Стилизованный линейный график, отображающий данные о ценах.
  */
 
-const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
+export const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
 	const lineColor =
 		colorState === 'up'
 			? '#22c55e'
 			: colorState === 'down'
-			? '#ef4444'
-			: '#6b7280';
+				? '#ef4444'
+				: '#6b7280';
 
 	const chartData = {
 		labels,
@@ -98,5 +98,3 @@ const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
 
 	return <Line data={chartData} options={options} />;
 };
-
-export default Chart;

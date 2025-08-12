@@ -8,8 +8,8 @@ import useStore from '@/store/store';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import Container from '@/components/container';
-import FormInput from '@/components/formInput';
+import { Container } from '@/components/container';
+import { FormInput } from '@/components/formInput';
 
 /**
  * Компонент страницы входа.

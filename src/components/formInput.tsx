@@ -30,7 +30,7 @@ interface FormInputProps<T extends FieldValues> {
  * @returns Контролируемое поле ввода, связанное с react-hook-form.
  */
 
-const FormInput = <T extends FieldValues>({
+export const FormInput = <T extends FieldValues>({
 	type,
 	name,
 	label,
@@ -65,5 +65,3 @@ const FormInput = <T extends FieldValues>({
 		</div>
 	);
 };
-
-export default FormInput;

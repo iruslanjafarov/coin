@@ -9,8 +9,8 @@ import { Menu, MenuButton, MenuItems } from '@headlessui/react';
 
 import { AnimatePresence } from 'framer-motion';
 
-import TransitionViewEvery from './transitionViewEvery';
-import AvatarButton from './avatarButton';
+import { TransitionViewEvery } from './transitionViewEvery';
+import { AvatarButton } from './avatarButton';
 
 import AvatarLogo from '@/assets/avatar.jpg';
 
@@ -23,7 +23,7 @@ import AvatarLogo from '@/assets/avatar.jpg';
  * @returns JSX-элемент, представляющий аватар с выпадающим меню.
  */
 
-const Avatar = () => {
+export const Avatar = () => {
 	const router = useRouter();
 
 	const { isAuth, setIsAuth } = useStore();
@@ -82,5 +82,3 @@ const Avatar = () => {
 		</Menu>
 	);
 };
-
-export default Avatar;
