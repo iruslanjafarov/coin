@@ -13,7 +13,6 @@ interface FormInputProps<T extends FieldValues> {
 	label?: string;
 	placeholder?: string;
 	register: UseFormRegister<T>;
-	required?: boolean;
 	error?: FieldError;
 }
 
@@ -25,7 +24,6 @@ interface FormInputProps<T extends FieldValues> {
  * @param label - Опциональная метка поля.
  * @param placeholder - Опциональный плейсхолдер.
  * @param register - Функция регистрации из react-hook-form.
- * @param required - Флаг обязательности поля.
  * @param error - Опциональный объект ошибки для отображения состояния валидации.
  * @returns Контролируемое поле ввода, связанное с react-hook-form.
  */
@@ -36,7 +34,6 @@ export const FormInput = <T extends FieldValues>({
 	label,
 	placeholder,
 	register,
-	required = false,
 	error,
 }: FormInputProps<T>) => {
 	return (
@@ -53,9 +50,7 @@ export const FormInput = <T extends FieldValues>({
 				type={type}
 				id={name}
 				placeholder={placeholder}
-				{...register(name, {
-					required: required ? `Поле '${label || name}' обязательное` : false,
-				})}
+				{...register(name)}
 				className={`px-3 py-2 rounded-md 
           border ${
 						error ? 'border-red-500' : 'border-gray-300'
