@@ -5,10 +5,10 @@ import { useEffect } from 'react';
 import useStore from '@/store/store';
 import useItems from '@/hooks/useItems';
 
-import Spinner from '@/components/spinner';
-import Container from '@/components/container';
+import { Spinner } from '@/components/spinner';
+import { Container } from '@/components/container';
 import Item from '@/components/main/item';
-import TransitionViewEvery from '@/components/transitionViewEvery';
+import { TransitionViewEvery } from '@/components/transitionViewEvery';
 
 /**
  * Основной компонент для отображения списка элементов с индикатором загрузки во время получения данных.

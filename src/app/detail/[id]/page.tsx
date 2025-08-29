@@ -9,15 +9,15 @@ import useStore from '@/store/store';
 
 import useItem from '@/hooks/useItem';
 
-import Container from '@/components/container';
-import Chart from '@/components/chart';
+import { Container } from '@/components/container';
+import { Chart } from '@/components/chart';
 
 /**
  * Компонент страницы деталей, отображающий информацию о выбранной криптовалюте.
  *
  * Этот компонент получает текущий элемент на основе параметра маршрута (ID)
  * и отображает его название, цену, изображение и динамический график изменения цены.
- * 
+ *
  * @returns JSX-разметка подробного представления элемента.
  */
 
@@ -90,8 +90,8 @@ const Detail = () => {
 									isUp
 										? 'bg-green-100 text-green-600'
 										: isDown
-										? 'bg-red-100 text-red-600'
-										: 'bg-gray-100 text-gray-500'
+											? 'bg-red-100 text-red-600'
+											: 'bg-gray-100 text-gray-500'
 								}`}
 							>
 								{price.toFixed(2)} $

@@ -17,7 +17,7 @@ interface ITransitionViewEvery {
  * @returns Обёртка с анимацией, содержащая дочерние элементы.
  */
 
-const TransitionViewEvery: FC<ITransitionViewEvery> = ({ children, index }) => {
+export const TransitionViewEvery: FC<ITransitionViewEvery> = ({ children, index }) => {
 	return (
 		<motion.div
 			custom={index}
@@ -37,5 +37,3 @@ const TransitionViewEvery: FC<ITransitionViewEvery> = ({ children, index }) => {
 		</motion.div>
 	);
 };
-
-export default TransitionViewEvery;

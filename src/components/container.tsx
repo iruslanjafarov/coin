@@ -15,12 +15,10 @@ interface IContainer {
  * @returns Контейнер с дочерними элементами и применённым классом.
  */
 
-const Container: FC<IContainer> = ({ children, className }) => {
+export const Container: FC<IContainer> = ({ children, className }) => {
 	return (
 		<div className={`max-w-[1000px] w-full mx-auto ${className}`}>
 			{children}
 		</div>
 	);
 };
-
-export default Container;
