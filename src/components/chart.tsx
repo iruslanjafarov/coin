@@ -7,8 +7,10 @@ import {
 	LineElement,
 	CategoryScale,
 	LinearScale,
+	Filler,
 	PointElement,
 	Tooltip,
+	ScriptableContext,
 } from 'chart.js';
 
 import { Line } from 'react-chartjs-2';
@@ -17,6 +19,7 @@ ChartJS.register(
 	LineElement,
 	CategoryScale,
 	LinearScale,
+	Filler,
 	PointElement,
 	Tooltip,
 );
@@ -52,9 +55,21 @@ export const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
 				label: '',
 				data,
 				borderColor: lineColor,
-				backgroundColor: 'transparent',
+				backgroundColor: (context: ScriptableContext<'line'>) => {
+					const ctx = context.chart.ctx;
+					const gradient = ctx.createLinearGradient(
+						0,
+						0,
+						0,
+						context.chart.height,
+					);
+					gradient.addColorStop(0, `${lineColor}33`);
+					gradient.addColorStop(1, `${lineColor}00`);
+					return gradient;
+				},
+				fill: true,
 				pointRadius: 0,
-				tension: 0,
+				tension: 0.2,
 				borderWidth: 2,
 			},
 		],
@@ -83,9 +98,9 @@ export const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
 				},
 			},
 			y: {
-				display: true,
+				display: false,
 				grid: {
-					display: true,
+					display: false,
 				},
 			},
 		},

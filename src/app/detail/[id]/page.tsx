@@ -105,7 +105,7 @@ const Detail = () => {
 							height={128}
 						/>
 					</div>
-					<div className='mt-6 p-4 rounded-2xl border border-gray-200 shadow-sm'>
+					<div className='mt-6 rounded-2xl border border-gray-200 shadow-sm'>
 						<Chart
 							labels={generateTimestamps(itemHistory?.length)}
 							data={itemHistory}
