@@ -688,9 +688,9 @@
   integrity sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==
 
 "@types/node@^20":
-  version "20.19.11"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.19.11.tgz#728cab53092bd5f143beed7fbba7ba99de3c16c4"
-  integrity sha512-uug3FEEGv0r+jrecvUUpbY8lLisvIjg6AAic6a2bSP5OEOLeJsDSnvhCDov7ipFFMXS3orMpzlmi0ZcuGkBbow==
+  version "20.19.13"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-20.19.13.tgz#b79004a05068e28fb2de281b3a44c5c993650e59"
+  integrity sha512-yCAeZl7a0DxgNVteXFHt9+uyFbqXGy/ShC4BlcHkoE0AfGXYv/BUiplV72DjMYXHDBXFjhvr6DD1NiRVfB4j8g==
   dependencies:
     undici-types "~6.21.0"
 
@@ -3250,9 +3250,9 @@ yocto-queue@^0.1.0:
   integrity sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==
 
 zod@^4.0.17:
-  version "4.1.4"
-  resolved "https://registry.yarnpkg.com/zod/-/zod-4.1.4.tgz#b65b21c825af6f301d36b3d6bdbbd9b0c8a7c831"
-  integrity sha512-2YqJuWkU6IIK9qcE4k1lLLhyZ6zFw7XVRdQGpV97jEIZwTrscUw+DY31Xczd8nwaoksyJUIxCojZXwckJovWxA==
+  version "4.1.5"
+  resolved "https://registry.yarnpkg.com/zod/-/zod-4.1.5.tgz#7a21fc3178928ede50a28f7d0db4414c4cdb0161"
+  integrity sha512-rcUUZqlLJgBC33IT3PNMgsCq6TzLQEG/Ei/KTCU0PedSWRMAXoOUN+4t/0H+Q8bdnLPdqUYnvboJT0bn/229qg==
 
 zustand@^5.0.3:
   version "5.0.8"
