@@ -9,15 +9,15 @@
  * @property price – текущая цена актива
  * @property prevPrice – (опционально) предыдущая цена, используется для отображения динамики
  *
- * @property metrics – объект с основными метриками актива
- * @property metrics.marketCap – рыночная капитализация (Market Cap), общая стоимость всех монет в обращении, в долларах США (USD)
- * @property metrics.volume24h – торговый объём за последние 24 часа, в долларах США (USD)
- * @property metrics.circulatingSupply – количество монет, находящихся в обращении
- * @property metrics.maxSupply – максимальное количество монет (если ограничено, иначе null)
+ * @property metrics – (опционально) объект с основными метриками актива
+ * @property metrics.marketCap – (опционально) рыночная капитализация (Market Cap), в долларах США (USD)
+ * @property metrics.volume24h – (опционально) торговый объём за последние 24 часа, в долларах США (USD)
+ * @property metrics.circulatingSupply – (опционально) количество монет в обращении
+ * @property metrics.maxSupply – (опционально) максимальное количество монет (если ограничено, иначе null)
  *
- * @property technical – объект с технической информацией о криптовалюте
- * @property technical.network – сеть (блокчейн), на которой работает криптовалюта
- * @property technical.algorithm – алгоритм консенсуса или шифрования, используемый в сети
+ * @property technical – (опционально) объект с технической информацией о криптовалюте
+ * @property technical.network – (опционально) сеть (блокчейн)
+ * @property technical.algorithm – (опционально) алгоритм консенсуса или шифрования
  */
 
 export interface IItem {
@@ -26,14 +26,14 @@ export interface IItem {
 	name: string;
 	price: number;
 	prevPrice?: number;
-	metrics: {
-		marketCap: number;
-		volume24h: number;
-		circulatingSupply: number;
-		maxSupply: number | null;
+	metrics?: {
+		marketCap?: number;
+		volume24h?: number;
+		circulatingSupply?: number;
+		maxSupply?: number | null;
 	};
-	technical: {
-		network: string;
-		algorithm: string;
+	technical?: {
+		network?: string;
+		algorithm?: string;
 	};
 }
