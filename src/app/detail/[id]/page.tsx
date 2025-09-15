@@ -12,6 +12,12 @@ import useItem from '@/hooks/useItem';
 import { Container } from '@/components/container';
 import { Chart } from '@/components/chart';
 
+const getValidNumbers = (number: number): string =>
+	number.toLocaleString('ru-RU', {
+		style: 'currency',
+		currency: 'USD',
+	});
+
 /**
  * Компонент страницы деталей, отображающий информацию о выбранной криптовалюте.
  *
@@ -91,11 +97,21 @@ const Detail = () => {
 	}
 
 	const metricsList = [
-		{ value: marketCap ? `${marketCap} $` : '—', label: 'Капитализация' },
-		{ value: volume24h ? `${volume24h} $` : '—', label: 'Объем за сутки' },
-		{ value: circulatingSupply ?? '—', label: 'Монеты в обращении' },
 		{
-			value: maxSupply ?? 'Не ограничено',
+			value: marketCap ? getValidNumbers(marketCap) : '—',
+			label: 'Капитализация',
+		},
+		{
+			value: volume24h ? getValidNumbers(volume24h) : '—',
+			label: 'Объем за сутки',
+		},
+		{
+			value: circulatingSupply.toLocaleString('ru-RU') ?? '—',
+			label: 'Монеты в обращении',
+		},
+		{
+			value:
+				maxSupply != null ? maxSupply.toLocaleString('ru-RU') : 'Не ограничено',
 			label: 'Максимальное количество монет',
 		},
 		{ value: network ? network : '—', label: 'Сеть' },
