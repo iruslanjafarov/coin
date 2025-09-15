@@ -60,8 +60,13 @@ const Detail = () => {
 		name,
 		price,
 		prevPrice,
-		metrics: { marketCap, volume24h, circulatingSupply, maxSupply },
-		technical: { network, algorithm },
+		metrics: {
+			marketCap = 0,
+			volume24h = 0,
+			circulatingSupply = 0,
+			maxSupply = null,
+		} = {},
+		technical: { network = '-', algorithm = '-' } = {},
 	} = item;
 
 	const isUp = prevPrice !== undefined && price > prevPrice;
