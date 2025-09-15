@@ -4,61 +4,153 @@
 			"id": 1,
 			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/bitcoin-btc-logo.svg?v=1744641377316",
 			"name": "Bitcoin",
-			"price": 42000.55
+			"price": 42000.55,
+			"metrics": {
+				"marketCap": 820000000000,
+				"volume24h": 28000000000,
+				"circulatingSupply": 19400000,
+				"maxSupply": 21000000
+			},
+			"technical": {
+				"network": "Bitcoin",
+				"algorithm": "SHA-256"
+			}
 		},
 		{
 			"id": 2,
 			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/ethereum-eth-logo.svg?v=1744641379536",
 			"name": "Ethereum",
-			"price": 2800.99
+			"price": 2800.99,
+			"metrics": {
+				"marketCap": 340000000000,
+				"volume24h": 18000000000,
+				"circulatingSupply": 120000000,
+				"maxSupply": null
+			},
+			"technical": {
+				"network": "Ethereum"
+			}
 		},
 		{
 			"id": 3,
 			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/solana-sol-logo.svg?v=1744641380994",
 			"name": "Solana",
-			"price": 120.45
+			"price": 120.45,
+			"metrics": {
+				"marketCap": 52000000000,
+				"volume24h": 2500000000,
+				"circulatingSupply": 430000000,
+				"maxSupply": null
+			},
+			"technical": {
+				"network": "Solana"
+			}
 		},
 		{
 			"id": 4,
 			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/cardano-ada-logo.svg?v=1744641375712",
 			"name": "Cardano",
-			"price": 1.25
+			"price": 1.25,
+			"metrics": {
+				"marketCap": 40000000000,
+				"volume24h": 2000000000,
+				"circulatingSupply": 32000000000,
+				"maxSupply": 45000000000
+			},
+			"technical": {
+				"network": "Cardano"
+			}
 		},
 		{
 			"id": 5,
 			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/litecoin-ltc-logo.svg?v=1744641383071",
 			"name": "Litecoin",
-			"price": 150.78
+			"price": 150.78,
+			"metrics": {
+				"marketCap": 10000000000,
+				"volume24h": 900000000,
+				"circulatingSupply": 74000000,
+				"maxSupply": 84000000
+			},
+			"technical": {
+				"network": "Litecoin",
+				"algorithm": "Scrypt"
+			}
 		},
 		{
 			"id": 6,
 			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/chainlink-link-logo.svg?v=1744641364398",
 			"name": "Chainlink",
-			"price": 24.89
+			"price": 24.89,
+			"metrics": {
+				"marketCap": 12000000000,
+				"volume24h": 600000000,
+				"circulatingSupply": 508000000,
+				"maxSupply": 1000000000
+			},
+			"technical": {
+				"network": "Ethereum"
+			}
 		},
 		{
 			"id": 7,
 			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/uniswap-uni-logo.svg?v=1744641347859",
 			"name": "Uniswap",
-			"price": 18.45
+			"price": 18.45,
+			"metrics": {
+				"marketCap": 9000000000,
+				"volume24h": 350000000,
+				"circulatingSupply": 600000000,
+				"maxSupply": 1000000000
+			},
+			"technical": {
+				"network": "Ethereum"
+			}
 		},
 		{
 			"id": 8,
 			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/avalanche-avax-logo.svg?v=1744641368584",
 			"name": "Avalanche",
-			"price": 60.99
+			"price": 60.99,
+			"metrics": {
+				"marketCap": 22000000000,
+				"volume24h": 1200000000,
+				"circulatingSupply": 360000000,
+				"maxSupply": 720000000
+			},
+			"technical": {
+				"network": "Avalanche"
+			}
 		},
 		{
 			"id": 9,
 			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/pancakeswap-cake-logo.svg?v=1744641370095",
 			"name": "PancakeSwap",
-			"price": 2.75
+			"price": 2.75,
+			"metrics": {
+				"marketCap": 700000000,
+				"volume24h": 60000000,
+				"circulatingSupply": 160000000,
+				"maxSupply": 750000000
+			},
+			"technical": {
+				"network": "BNB Chain"
+			}
 		},
 		{
 			"id": 10,
 			"thumbnail": "https://cdn.glitch.global/63731719-cd04-4a83-9f3d-07ae5664a7b1/tron-trx-logo.svg?v=1744641371634",
 			"name": "Tron",
-			"price": 0.08
+			"price": 0.08,
+			"metrics": {
+				"marketCap": 7000000000,
+				"volume24h": 300000000,
+				"circulatingSupply": 88000000000,
+				"maxSupply": null
+			},
+			"technical": {
+				"network": "Tron"
+			}
 		}
 	]
 }

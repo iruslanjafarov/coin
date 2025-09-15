@@ -55,7 +55,14 @@ const Detail = () => {
 		);
 	}
 
-	const { thumbnail, name, price, prevPrice } = item;
+	const {
+		thumbnail,
+		name,
+		price,
+		prevPrice,
+		metrics: { marketCap, volume24h, circulatingSupply, maxSupply },
+		technical: { network, algorithm },
+	} = item;
 
 	const isUp = prevPrice !== undefined && price > prevPrice;
 	const isDown = prevPrice !== undefined && price < prevPrice;
@@ -78,13 +85,25 @@ const Detail = () => {
 		else if (price < prevPrice) colorState = 'down';
 	}
 
+	const metricsList = [
+		{ value: marketCap ? `${marketCap} $` : '—', label: 'Капитализация' },
+		{ value: volume24h ? `${volume24h} $` : '—', label: 'Объем за сутки' },
+		{ value: circulatingSupply ?? '—', label: 'Монеты в обращении' },
+		{
+			value: maxSupply ?? 'Не ограничено',
+			label: 'Максимальное количество монет',
+		},
+		{ value: network ? network : '—', label: 'Сеть' },
+		{ value: algorithm ? algorithm : '—', label: 'Алгоритм' },
+	];
+
 	return (
 		<main>
 			<section className='my-6'>
 				<Container>
 					<div className='flex justify-between items-center mt-12'>
 						<div className='flex flex-col gap-1'>
-							<div className='text-4xl tracking-tight truncate'>{name}</div>
+							<h1 className='text-4xl tracking-tight truncate'>{name}</h1>
 							<div
 								className={`text-3xl tracking-tight truncate transition-colors duration-300 w-fit py-0.5 px-2 rounded-md ${
 									isUp
@@ -112,6 +131,26 @@ const Detail = () => {
 							colorState={colorState}
 						/>
 					</div>
+				</Container>
+			</section>
+			<section>
+				<Container className='mb-6'>
+					<h2 className='text-2xl truncate'>Основные метрики</h2>
+					<ul>
+						{metricsList?.map(({ value, label }) => (
+							<li
+								key={label}
+								className='flex justify-between items-center border-b border-b-gray-300 py-1'
+							>
+								<span className='text-lg text-gray-500 flex-1 min-w-0 truncate'>
+									{label}
+								</span>
+								<span className='text-lg flex-shrink-0 truncate ml-2'>
+									{value}
+								</span>
+							</li>
+						))}
+					</ul>
 				</Container>
 			</section>
 		</main>
