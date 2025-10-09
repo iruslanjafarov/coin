@@ -9,6 +9,8 @@ import useStore from '@/store/store';
 
 import useItem from '@/hooks/useItem';
 
+import { transformImagesLink } from '@/utils/supabase/transformImagesLink';
+
 import { Container } from '@/components/container';
 import { Chart } from '@/components/chart';
 
@@ -138,7 +140,7 @@ const Detail = () => {
 							</div>
 						</div>
 						<Image
-							src={thumbnail}
+							src={transformImagesLink(thumbnail)}
 							alt={name}
 							className='w-24 h-24'
 							width={128}

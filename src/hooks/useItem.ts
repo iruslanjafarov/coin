@@ -1,40 +1,56 @@
 'use client';
 
-//import { IItem } from '@/types/item';
-
-//import useHttp from './useHttp';
-import useStore from '@/store/store';
 import { useEffect, useState } from 'react';
-import { getItemById } from './useDatabase';
+
+import useStore from '@/store/store';
+import { supabase } from '@/utils/supabase/supabase';
 
 /**
  * Кастомный хук для загрузки одного элемента (например, криптовалюты) по его ID.
  * При смене ID очищает предыдущий выбранный элемент из Zustand-хранилища, чтобы не показывать устаревшие данные.
- * Затем выполняет запрос через `useHttp` и обновляет хранилище полученным элементом.
+ * Затем выполняет запрос через и обновляет хранилище полученным элементом.
  *
  * @param id - Строка с уникальным идентификатором элемента для загрузки.
  * @returns Объект с полем `loading`, указывающим на процесс загрузки.
  */
 
 const useItem = (id: string) => {
-	const { clearItem, setItem, setItemWithId } = useStore();
 	const [loading, setLoading] = useState(false);
 
-	//const url: string = `https://spectrum-happy-apology.glitch.me/currencies/${id}`;
-
-	//const { data, loading } = useHttp<IItem>(url);
+	const { setItem, clearItem, setItemWithId } = useStore();
 
 	useEffect(() => {
 		clearItem();
 
-		const item = getItemById(id);
+		let mounted = true;
 
-		if (item) {
-			setItem(item);
-			setItemWithId(id, item);
-		}
-		setLoading(false);
-	}, [id, clearItem, setItem, setItemWithId]);
+		const fetchData = async () => {
+			setLoading(true);
+
+			const { data, error } = await supabase
+				.from('currencies')
+				.select('*')
+				.eq('id', id)
+				.single();
+
+			if (!mounted) return;
+
+			if (error) {
+				console.error(error);
+			} else {
+				setItemWithId(id, data);
+				setItem(data);
+			}
+
+			setLoading(false);
+		};
+
+		fetchData();
+
+		return () => {
+			mounted = false;
+		};
+	}, [id, setItem, clearItem, setItemWithId]);
 
 	return { loading };
 };
