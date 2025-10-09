@@ -11,6 +11,7 @@
 		"@headlessui/react": "^2.2.4",
 		"@heroicons/react": "^2.2.0",
 		"@hookform/resolvers": "^5.2.1",
+		"@supabase/supabase-js": "^2.75.0",
 		"chart.js": "^4.4.9",
 		"ky": "^1.7.4",
 		"motion": "^12.4.2",
