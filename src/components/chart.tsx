@@ -7,8 +7,10 @@ import {
 	LineElement,
 	CategoryScale,
 	LinearScale,
+	Filler,
 	PointElement,
 	Tooltip,
+	ScriptableContext,
 } from 'chart.js';
 
 import { Line } from 'react-chartjs-2';
@@ -17,8 +19,9 @@ ChartJS.register(
 	LineElement,
 	CategoryScale,
 	LinearScale,
+	Filler,
 	PointElement,
-	Tooltip
+	Tooltip,
 );
 
 interface IChartProps {
@@ -37,13 +40,13 @@ interface IChartProps {
  * @returns Стилизованный линейный график, отображающий данные о ценах.
  */
 
-const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
+export const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
 	const lineColor =
 		colorState === 'up'
 			? '#22c55e'
 			: colorState === 'down'
-			? '#ef4444'
-			: '#6b7280';
+				? '#ef4444'
+				: '#6b7280';
 
 	const chartData = {
 		labels,
@@ -52,9 +55,21 @@ const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
 				label: '',
 				data,
 				borderColor: lineColor,
-				backgroundColor: 'transparent',
+				backgroundColor: (context: ScriptableContext<'line'>) => {
+					const ctx = context.chart.ctx;
+					const gradient = ctx.createLinearGradient(
+						0,
+						0,
+						0,
+						context.chart.height,
+					);
+					gradient.addColorStop(0, `${lineColor}33`);
+					gradient.addColorStop(1, `${lineColor}00`);
+					return gradient;
+				},
+				fill: true,
 				pointRadius: 0,
-				tension: 0,
+				tension: 0.2,
 				borderWidth: 2,
 			},
 		],
@@ -83,9 +98,9 @@ const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
 				},
 			},
 			y: {
-				display: true,
+				display: false,
 				grid: {
-					display: true,
+					display: false,
 				},
 			},
 		},
@@ -98,5 +113,3 @@ const Chart: FC<IChartProps> = ({ labels, data, colorState }) => {
 
 	return <Line data={chartData} options={options} />;
 };
-
-export default Chart;

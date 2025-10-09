@@ -3,9 +3,9 @@ import type { FC, ReactNode } from 'react';
 
 import { Nunito } from 'next/font/google';
 
-import TopLoader from '@/components/topLoader';
+import { TopLoader } from '@/components/topLoader';
 import Header from '@/components/header';
-import Footer from '@/components/footer';
+import { Footer } from '@/components/footer';
 
 import '@/styles/style.css';
 

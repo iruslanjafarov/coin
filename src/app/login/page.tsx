@@ -7,9 +7,12 @@ import { useRouter } from 'nextjs-toploader/app';
 import useStore from '@/store/store';
 
 import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import Container from '@/components/container';
-import FormInput from '@/components/formInput';
+import { loginSchema, type LoginSchema } from '@/schemas/auth';
+
+import { Container } from '@/components/container';
+import { FormInput } from '@/components/formInput';
 
 /**
  * Компонент страницы входа.
@@ -18,12 +21,6 @@ import FormInput from '@/components/formInput';
  *
  * @returns Контейнер с элементами формы для авторизации.
  */
-
-interface ILoginInputs {
-	name: string;
-	email: string;
-	password: string;
-}
 
 const Login = () => {
 	const { isAuth, setIsAuth, setName } = useStore();
@@ -45,10 +42,13 @@ const Login = () => {
 	const {
 		register,
 		handleSubmit,
-		formState: { errors },
-	} = useForm<ILoginInputs>();
+		formState: { errors, isValid },
+	} = useForm<LoginSchema>({
+		resolver: zodResolver(loginSchema),
+		mode: 'onChange',
+	});
 
-	const onSubmit: SubmitHandler<ILoginInputs> = (data) => {
+	const onSubmit: SubmitHandler<LoginSchema> = (data) => {
 		setIsWrong(false);
 
 		if (data?.email === 'jafarov@jafarov.store' && data?.password === '123') {
@@ -71,7 +71,6 @@ const Login = () => {
 						label='Имя'
 						placeholder='Введите имя'
 						register={register}
-						required
 						error={errors?.name}
 					/>
 					<FormInput
@@ -80,7 +79,6 @@ const Login = () => {
 						label='Почта'
 						placeholder='Введите почту'
 						register={register}
-						required
 						error={errors?.email}
 					/>
 					<FormInput
@@ -89,7 +87,6 @@ const Login = () => {
 						label='Пароль'
 						placeholder='Введите пароль'
 						register={register}
-						required
 						error={errors?.password}
 					/>
 					{isWrong && (
@@ -99,7 +96,8 @@ const Login = () => {
 					)}
 					<button
 						type='submit'
-						className='mt-2 px-4 bg-[#FFD700] py-2 cursor-pointer rounded-md text-sm text-gray-700 focus:outline-none focus:border-[#FFD700] focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2'
+						className='mt-2 px-4 py-2 rounded-md text-sm bg-[#FFD700] text-gray-700 cursor-pointer focus:outline-none focus:border-[#FFD700] focus:ring-2 focus:ring-[#FFD700] focus:ring-offset-2 disabled:opacity-70 disabled:text-gray-400 disabled:cursor-not-allowed'
+						disabled={!isValid}
 					>
 						Войти
 					</button>

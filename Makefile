@@ -1,3 +1,5 @@
+start: install dev
+
 install:
 	yarn
 

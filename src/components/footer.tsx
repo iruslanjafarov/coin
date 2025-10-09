@@ -3,15 +3,15 @@
 import useStore from '@/store/store';
 import { usePathname } from 'next/navigation';
 
-import Container from './container';
-import Logo from './logo';
+import { Container } from './container';
+import { Logo } from './logo';
 
 import AppleLogo from '@/assets/apple.svg';
 import GooglePay from '@/assets/google.svg';
 import Mir from '@/assets/mir.svg';
 import Visa from '@/assets/visa.svg';
 import MasterCard from '@/assets/mastercard.svg';
-import TransitionViewEvery from './transitionViewEvery';
+import { TransitionViewEvery } from './transitionViewEvery';
 
 /**
  * Компонент Footer — подвал приложения.
@@ -23,13 +23,13 @@ import TransitionViewEvery from './transitionViewEvery';
  * @returns Разметка подвала с логотипами платёжных систем и информацией о копирайте.
  */
 
-const Footer = () => {
+export const Footer = () => {
 	const { items } = useStore();
 	const pathname: string = usePathname();
 
 	const hideFooterRoutes: string[] = ['/login', '/detail', '/account'];
 	const hideFooterCondition: boolean = hideFooterRoutes.some((route) =>
-		pathname.startsWith(route)
+		pathname.startsWith(route),
 	);
 
 	if (!items.length || hideFooterCondition) {
@@ -75,5 +75,3 @@ const Footer = () => {
 		</footer>
 	);
 };
-
-export default Footer;

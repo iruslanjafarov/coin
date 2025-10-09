@@ -5,10 +5,12 @@ import { useEffect } from 'react';
 import useStore from '@/store/store';
 import useItems from '@/hooks/useItems';
 
-import Spinner from '@/components/spinner';
-import Container from '@/components/container';
+import { transformImagesLink } from '@/utils/supabase/transformImagesLink';
+
+import { Spinner } from '@/components/spinner';
+import { Container } from '@/components/container';
 import Item from '@/components/main/item';
-import TransitionViewEvery from '@/components/transitionViewEvery';
+import { TransitionViewEvery } from '@/components/transitionViewEvery';
 
 /**
  * Основной компонент для отображения списка элементов с индикатором загрузки во время получения данных.
@@ -43,7 +45,7 @@ const Main = () => {
 							<TransitionViewEvery index={id} key={id}>
 								<Item
 									id={id}
-									thumbnail={thumbnail}
+									thumbnail={transformImagesLink(thumbnail)}
 									name={name}
 									price={price}
 									prevPrice={prevPrice}

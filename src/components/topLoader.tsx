@@ -11,8 +11,6 @@ import NextTopLoader from 'nextjs-toploader';
  * @returns JSX-элемент, представляющий индикатор прогресса загрузки.
  */
 
-const TopLoader = () => (
+export const TopLoader = () => (
 	<NextTopLoader color='#e6c200' easing='ease' showSpinner={false} />
 );
-
-export default TopLoader;

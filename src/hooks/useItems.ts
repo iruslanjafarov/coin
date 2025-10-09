@@ -1,33 +1,47 @@
 'use client';
 
-//import { IItem } from '@/types/item';
-
-//import useHttp from './useHttp';
-import useStore from '@/store/store';
-import { getAllItems } from './useDatabase';
 import { useEffect, useState } from 'react';
 
+import useStore from '@/store/store';
+
+import { supabase } from '@/utils/supabase/supabase';
+
 /**
- * Кастомный хук для загрузки списка элементов (валют) с помощью хука `useHttp`.
+ * Кастомный хук для загрузки списка элементов (валют).
  * Предоставляет данные и состояние загрузки для списка элементов.
  *
  * @returns Объект с полем `loading`, указывающим на процесс загрузки.
  */
 
 const useItems = () => {
-	const { setItems } = useStore();
 	const [loading, setLoading] = useState(false);
 
-	//const url: string = 'https://spectrum-happy-apology.glitch.me/currencies';
-
-	//const { data, loading } = useHttp<IItem[]>(url);
+	const { setItems } = useStore();
 
 	useEffect(() => {
-		const items = getAllItems();
+		let mounted = true;
 
-		setItems(items);
+		const fetchData = async () => {
+			setLoading(true);
 
-		setLoading(false);
+			const { data, error } = await supabase.from('currencies').select('*');
+
+			if (!mounted) return;
+
+			if (error) {
+				console.error(error);
+			} else {
+				setItems(data);
+			}
+
+			setLoading(false);
+		};
+
+		fetchData();
+
+		return () => {
+			mounted = false;
+		};
 	}, [setItems]);
 
 	return { loading };

@@ -17,7 +17,7 @@ interface IAvatarButton {
  * @returns JSX-элемент — стилизованная кнопка для использования внутри выпадающего меню аватара.
  */
 
-const AvatarButton: FC<IAvatarButton> = ({ onClick, children }) => {
+export const AvatarButton: FC<IAvatarButton> = ({ onClick, children }) => {
 	return (
 		<button
 			className='block px-4 py-2 w-full text-left text-sm tracking-tight hover:bg-gray-100 rounded-lg cursor-pointer transition-colors duration-200'
@@ -27,5 +27,3 @@ const AvatarButton: FC<IAvatarButton> = ({ onClick, children }) => {
 		</button>
 	);
 };
-
-export default AvatarButton;

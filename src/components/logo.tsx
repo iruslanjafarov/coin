@@ -22,7 +22,7 @@ interface ILogo {
  * @returns Элемент, представляющий логотип в стилизованном контейнере.
  */
 
-const Logo: FC<ILogo> = ({ src, alt, className = '' }) => {
+export const Logo: FC<ILogo> = ({ src, alt, className = '' }) => {
 	return (
 		<div
 			className={`bg-white transition-transform duration-200 hover:-translate-y-0.5 p-2 flex items-center justify-center rounded ${className}`}
@@ -31,5 +31,3 @@ const Logo: FC<ILogo> = ({ src, alt, className = '' }) => {
 		</div>
 	);
 };
-
-export default Logo;

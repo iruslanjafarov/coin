@@ -1,12 +1,23 @@
 /**
- * Интерфейс, описывающий один элемент (например, криптовалюту).
+ * Интерфейс, описывающий один элемент списка (например, криптовалюту).
  *
  * @interface IItem
- * @property id - Уникальный числовой идентификатор элемента.
- * @property thumbnail - URL-строка с миниатюрой изображения элемента.
- * @property name - Название элемента (например, название токена).
- * @property price - Текущая числовая цена элемента.
- * @property prevPrice - (Опционально) Предыдущая цена элемента, используется для определения изменений цены.
+ *
+ * @property id – уникальный числовой идентификатор элемента
+ * @property thumbnail – URL-строка с иконкой/миниатюрой криптовалюты
+ * @property name – название криптовалюты (например, "Bitcoin")
+ * @property price – текущая цена актива
+ * @property prevPrice – (опционально) предыдущая цена, используется для отображения динамики
+ *
+ * @property metrics – (опционально) объект с основными метриками актива
+ * @property metrics.marketCap – (опционально) рыночная капитализация (Market Cap), в долларах США (USD)
+ * @property metrics.volume24h – (опционально) торговый объём за последние 24 часа, в долларах США (USD)
+ * @property metrics.circulatingSupply – (опционально) количество монет в обращении
+ * @property metrics.maxSupply – (опционально) максимальное количество монет (если ограничено, иначе null)
+ *
+ * @property technical – (опционально) объект с технической информацией о криптовалюте
+ * @property technical.network – (опционально) сеть (блокчейн)
+ * @property technical.algorithm – (опционально) алгоритм консенсуса или шифрования
  */
 
 export interface IItem {
@@ -15,4 +26,14 @@ export interface IItem {
 	name: string;
 	price: number;
 	prevPrice?: number;
+	metrics?: {
+		marketCap?: number;
+		volume24h?: number;
+		circulatingSupply?: number;
+		maxSupply?: number | null;
+	};
+	technical?: {
+		network?: string;
+		algorithm?: string;
+	};
 }
