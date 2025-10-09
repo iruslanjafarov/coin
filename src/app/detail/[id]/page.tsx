@@ -10,7 +10,7 @@ import useStore from '@/store/store';
 import useItem from '@/hooks/useItem';
 
 import Container from '@/components/container';
-import Chart from '@/components/chart';
+import Chart from '@/components/chart'; 
 
 /**
  * Компонент страницы деталей, отображающий информацию о выбранной криптовалюте.
